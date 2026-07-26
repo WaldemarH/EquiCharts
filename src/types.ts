@@ -27,12 +27,12 @@ export interface Datafeed {
     symbol: SymbolInfo,
     period: Period,
     from: number,
-    to: number,
+    to: number
   ): Promise<TViewData[]>;
   subscribe(
     symbol: SymbolInfo,
     period: Period,
-    callback: DatafeedSubscribeCallback,
+    callback: DatafeedSubscribeCallback
   ): void;
   unsubscribe(symbol: SymbolInfo, period: Period): void;
 }

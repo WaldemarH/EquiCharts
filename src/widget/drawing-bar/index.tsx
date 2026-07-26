@@ -26,7 +26,7 @@ const GROUP_ID = 'drawing_tools';
 
 const DrawingBar: Component<DrawingBarProps> = (props) => {
   const [singleLineIcon, setSingleLineIcon] = createSignal(
-    'horizontalStraightLine',
+    'horizontalStraightLine'
   );
   const [moreLineIcon, setMoreLineIcon] = createSignal('priceChannelLine');
   const [polygonIcon, setPolygonIcon] = createSignal('circle');

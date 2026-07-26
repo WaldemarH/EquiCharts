@@ -23,7 +23,7 @@ import { type RectAttrs, drawRect } from './rect';
 
 export function getTextRect(
   attrs: TextAttrs,
-  styles: Partial<TextStyle>,
+  styles: Partial<TextStyle>
 ): RectAttrs {
   const {
     size = 12,
@@ -87,7 +87,7 @@ export function getTextRect(
 export function checkCoordinateOnText(
   coordinate: Coordinate,
   attrs: TextAttrs | TextAttrs[],
-  styles: Partial<TextStyle>,
+  styles: Partial<TextStyle>
 ): boolean {
   let texts: TextAttrs[] = [];
   texts = texts.concat(attrs);
@@ -108,7 +108,7 @@ export function checkCoordinateOnText(
 export function drawText(
   ctx: CanvasRenderingContext2D,
   attrs: TextAttrs | TextAttrs[],
-  styles: Partial<TextStyle>,
+  styles: Partial<TextStyle>
 ): void {
   let texts: TextAttrs[] = [];
   texts = texts.concat(attrs);
@@ -135,7 +135,7 @@ export function drawText(
       text.text,
       rect.x + paddingLeft,
       rect.y + paddingTop,
-      rect.width - paddingLeft - paddingRight,
+      rect.width - paddingLeft - paddingRight
     );
   });
 }
@@ -156,7 +156,7 @@ const text: FigureTemplate<TextAttrs | TextAttrs[], Partial<TextStyle>> = {
   draw: (
     ctx: CanvasRenderingContext2D,
     attrs: TextAttrs | TextAttrs[],
-    styles: Partial<TextStyle>,
+    styles: Partial<TextStyle>
   ) => {
     drawText(ctx, attrs, styles);
   },

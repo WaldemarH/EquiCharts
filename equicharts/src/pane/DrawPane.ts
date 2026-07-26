@@ -54,7 +54,7 @@ export default abstract class DrawPane<C extends Axis = Axis> extends Pane {
     afterElement: Nullable<HTMLElement>,
     chart: Chart,
     id: string,
-    options: Omit<PaneOptions, 'id' | 'height'>,
+    options: Omit<PaneOptions, 'id' | 'height'>
   ) {
     super(rootContainer, afterElement, chart, id);
     const container = this.getContainer();
@@ -103,7 +103,7 @@ export default abstract class DrawPane<C extends Axis = Axis> extends Pane {
   override setBounding(
     rootBounding: Partial<Bounding>,
     mainBounding?: Partial<Bounding>,
-    yAxisBounding?: Partial<Bounding>,
+    yAxisBounding?: Partial<Bounding>
   ): this {
     merge(this.getBounding(), rootBounding);
     const contentBounding: Partial<Bounding> = {};
@@ -162,7 +162,7 @@ export default abstract class DrawPane<C extends Axis = Axis> extends Pane {
       mainBounding.left,
       0,
       mainBounding.width,
-      mainBounding.height,
+      mainBounding.height
     );
     if (this._yAxisWidget !== null) {
       const yAxisBounding = this._yAxisWidget.getBounding();
@@ -171,7 +171,7 @@ export default abstract class DrawPane<C extends Axis = Axis> extends Pane {
         yAxisBounding.left,
         0,
         yAxisBounding.width,
-        yAxisBounding.height,
+        yAxisBounding.height
       );
     }
     return canvas;
@@ -185,6 +185,6 @@ export default abstract class DrawPane<C extends Axis = Axis> extends Pane {
   }
 
   protected abstract createMainWidget(
-    container: HTMLElement,
+    container: HTMLElement
   ): DrawWidget<DrawPane<C>>;
 }

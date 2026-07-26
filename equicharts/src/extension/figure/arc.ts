@@ -22,7 +22,7 @@ import { type CircleAttrs } from './circle';
 
 export function checkCoordinateOnArc(
   coordinate: Coordinate,
-  attrs: ArcAttrs | ArcAttrs[],
+  attrs: ArcAttrs | ArcAttrs[]
 ): boolean {
   let arcs: ArcAttrs[] = [];
   arcs = arcs.concat(attrs);
@@ -54,7 +54,7 @@ export function checkCoordinateOnArc(
 export function drawArc(
   ctx: CanvasRenderingContext2D,
   attrs: ArcAttrs | ArcAttrs[],
-  styles: Partial<LineStyle>,
+  styles: Partial<LineStyle>
 ): void {
   let arcs: ArcAttrs[] = [];
   arcs = arcs.concat(attrs);
@@ -90,7 +90,7 @@ const arc: FigureTemplate<ArcAttrs | ArcAttrs[], Partial<LineStyle>> = {
   draw: (
     ctx: CanvasRenderingContext2D,
     attrs: ArcAttrs | ArcAttrs[],
-    styles: Partial<LineStyle>,
+    styles: Partial<LineStyle>
   ) => {
     drawArc(ctx, attrs, styles);
   },

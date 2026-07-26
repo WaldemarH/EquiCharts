@@ -48,7 +48,7 @@ const IndicatorModal: Component<IndicatorModalProps> = (props) => {
                 />
               </li>
             );
-          },
+          }
         )}
         <li class="title">{i18n('sub_indicator', props.locale)}</li>
         {[

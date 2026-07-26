@@ -50,7 +50,7 @@ export interface AxisCreateTicksParams {
 }
 
 export type AxisCreateTicksCallback = (
-  params: AxisCreateTicksParams,
+  params: AxisCreateTicksParams
 ) => AxisTick[];
 
 export interface AxisTemplate {

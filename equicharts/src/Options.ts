@@ -29,7 +29,7 @@ export type FormatDate = (
   dateTimeFormat: Intl.DateTimeFormat,
   timestamp: number,
   format: string,
-  type: FormatDateType,
+  type: FormatDateType
 ) => string;
 
 export type FormatBigNumber = (value: string | number) => string;

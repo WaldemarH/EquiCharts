@@ -48,7 +48,7 @@ export default class YAxisView extends AxisView<YAxis> {
   override createTictViews(
     ticks: AxisTick[],
     bounding: Bounding,
-    styles: AxisStyle,
+    styles: AxisStyle
   ): LineAttrs[] {
     const yAxis = this.getWidget().getPane().getAxisComponent();
     const axisLineStyles = styles.axisLine;
@@ -80,7 +80,7 @@ export default class YAxisView extends AxisView<YAxis> {
   override createTickTexts(
     ticks: AxisTick[],
     bounding: Bounding,
-    styles: AxisStyle,
+    styles: AxisStyle
   ): TextAttrs[] {
     const yAxis = this.getWidget().getPane().getAxisComponent();
     const axisLineStyles = styles.axisLine;

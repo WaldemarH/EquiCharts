@@ -21,7 +21,7 @@ import { isNumber } from '../../common/utils/typeChecks';
 
 export function checkCoordinateOnLine(
   coordinate: Coordinate,
-  attrs: LineAttrs | LineAttrs[],
+  attrs: LineAttrs | LineAttrs[]
 ): boolean {
   let lines: LineAttrs[] = [];
   lines = lines.concat(attrs);
@@ -45,7 +45,7 @@ export function checkCoordinateOnLine(
         } else {
           const kb = getLinearSlopeIntercept(
             prevCoordinate,
-            currentCoordinate,
+            currentCoordinate
           )!;
           const y = getLinearYFromSlopeIntercept(kb, coordinate);
           const yDif = Math.abs(y - coordinate.y);
@@ -67,7 +67,7 @@ export function checkCoordinateOnLine(
 
 export function getLinearYFromSlopeIntercept(
   kb: Nullable<number[]>,
-  coordinate: Coordinate,
+  coordinate: Coordinate
 ): number {
   if (kb !== null) {
     return coordinate.x * kb[0] + kb[1];
@@ -84,7 +84,7 @@ export function getLinearYFromSlopeIntercept(
 export function getLinearYFromCoordinates(
   coordinate1: Coordinate,
   coordinate2: Coordinate,
-  targetCoordinate: Coordinate,
+  targetCoordinate: Coordinate
 ): number {
   const kb = getLinearSlopeIntercept(coordinate1, coordinate2);
   return getLinearYFromSlopeIntercept(kb, targetCoordinate);
@@ -92,7 +92,7 @@ export function getLinearYFromCoordinates(
 
 export function getLinearSlopeIntercept(
   coordinate1: Coordinate,
-  coordinate2: Coordinate,
+  coordinate2: Coordinate
 ): Nullable<number[]> {
   const difX = coordinate1.x - coordinate2.x;
   if (difX !== 0) {
@@ -106,7 +106,7 @@ export function getLinearSlopeIntercept(
 export function lineTo(
   ctx: CanvasRenderingContext2D,
   coordinates: Coordinate[],
-  smooth: number | boolean,
+  smooth: number | boolean
 ): void {
   const length = coordinates.length;
   const smoothParam = isNumber(smooth)
@@ -169,7 +169,7 @@ export function lineTo(
       lastCoordinate.x,
       lastCoordinate.y,
       lastCoordinate.x,
-      lastCoordinate.y,
+      lastCoordinate.y
     );
   } else {
     for (let i = 1; i < length; i++) {
@@ -181,7 +181,7 @@ export function lineTo(
 export function drawLine(
   ctx: CanvasRenderingContext2D,
   attrs: LineAttrs | LineAttrs[],
-  styles: Partial<SmoothLineStyle>,
+  styles: Partial<SmoothLineStyle>
 ): void {
   let lines: LineAttrs[] = [];
   lines = lines.concat(attrs);
@@ -246,7 +246,7 @@ const line: FigureTemplate<
   draw: (
     ctx: CanvasRenderingContext2D,
     attrs: LineAttrs | LineAttrs[],
-    styles: Partial<SmoothLineStyle>,
+    styles: Partial<SmoothLineStyle>
   ) => {
     drawLine(ctx, attrs, styles);
   },

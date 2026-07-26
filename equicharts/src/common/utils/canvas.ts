@@ -28,7 +28,7 @@ export function getPixelRatio(canvas: HTMLCanvasElement): number {
 export function createFont(
   size?: number,
   weight?: string | number,
-  family?: string,
+  family?: string
 ): string {
   return `${weight ?? 'normal'} ${size ?? 12}px ${family ?? '"Roboto", sans-serif'}`;
 }
@@ -42,7 +42,7 @@ export function calcTextWidth(
   text: string,
   size?: number,
   weight?: string | number,
-  family?: string,
+  family?: string
 ): number {
   if (!isValid(measureCtx)) {
     const canvas = document.createElement('canvas');

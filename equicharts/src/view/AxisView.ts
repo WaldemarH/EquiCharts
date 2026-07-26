@@ -64,16 +64,16 @@ export default abstract class AxisView<C extends Axis = Axis> extends View<C> {
 
   protected abstract createAxisLine(
     bounding: Bounding,
-    styles: AxisStyle,
+    styles: AxisStyle
   ): LineAttrs;
   protected abstract createTictViews(
     ticks: AxisTick[],
     bounding: Bounding,
-    styles: AxisStyle,
+    styles: AxisStyle
   ): LineAttrs[];
   protected abstract createTickTexts(
     tick: AxisTick[],
     bounding: Bounding,
-    styles: AxisStyle,
+    styles: AxisStyle
   ): TextAttrs[];
 }

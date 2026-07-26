@@ -182,7 +182,7 @@ export default class TimeScaleStore {
     }
 
     let to = Math.round(
-      this._lastBarRightSideDiffBarCount + totalBarCount + 0.5,
+      this._lastBarRightSideDiffBarCount + totalBarCount + 0.5
     );
     const realTo = to;
     if (to > totalBarCount) {
@@ -195,9 +195,7 @@ export default class TimeScaleStore {
     const realFrom =
       this._lastBarRightSideDiffBarCount > 0
         ? Math.round(
-            totalBarCount +
-              this._lastBarRightSideDiffBarCount -
-              visibleBarCount,
+            totalBarCount + this._lastBarRightSideDiffBarCount - visibleBarCount
           ) - 1
         : from;
     this._visibleRange = { from, to, realFrom, realTo };
@@ -378,7 +376,7 @@ export default class TimeScaleStore {
     this._chartStore.getChart().adjustPaneViewport(false, true, true, true);
     const realDistance = Math.round(
       prevLastBarRightSideDistance -
-        this._lastBarRightSideDiffBarCount * this._barSpace,
+        this._lastBarRightSideDiffBarCount * this._barSpace
     );
     if (realDistance !== 0) {
       this._chartStore
@@ -418,7 +416,7 @@ export default class TimeScaleStore {
       dataCount + this._lastBarRightSideDiffBarCount - dataIndex;
     // return Math.floor(this._totalBarSpace - (deltaFromRight - 0.5) * this._barSpace) - 0.5
     return Math.floor(
-      this._totalBarSpace - (deltaFromRight - 0.5) * this._barSpace,
+      this._totalBarSpace - (deltaFromRight - 0.5) * this._barSpace
     );
   }
 

@@ -60,7 +60,7 @@ export default class OverlayYAxisView<
     xAxis: Nullable<XAxis>,
     yAxis: Nullable<YAxis>,
     _hoverInstanceInfo: EventOverlayInfo,
-    clickInstanceInfo: EventOverlayInfo,
+    clickInstanceInfo: EventOverlayInfo
   ): void {
     this.drawFigures(
       ctx,
@@ -76,9 +76,9 @@ export default class OverlayYAxisView<
         decimalFoldThreshold,
         xAxis,
         yAxis,
-        clickInstanceInfo,
+        clickInstanceInfo
       ),
-      defaultStyles,
+      defaultStyles
     );
   }
 
@@ -93,7 +93,7 @@ export default class OverlayYAxisView<
     decimalFoldThreshold: number,
     _xAxis: Nullable<XAxis>,
     yAxis: Nullable<YAxis>,
-    clickInstanceInfo: EventOverlayInfo,
+    clickInstanceInfo: EventOverlayInfo
   ): OverlayFigure[] {
     const figures: OverlayFigure[] = [];
     if (
@@ -121,9 +121,9 @@ export default class OverlayYAxisView<
           const text = formatFoldDecimal(
             formatThousands(
               formatPrecision(point.value, precision.price),
-              thousandsSeparator,
+              thousandsSeparator
             ),
-            decimalFoldThreshold,
+            decimalFoldThreshold
           );
           figures.push({
             type: 'text',
@@ -165,7 +165,7 @@ export default class OverlayYAxisView<
     dateTimeFormat: Intl.DateTimeFormat,
     defaultStyles: OverlayStyle,
     xAxis: Nullable<XAxis>,
-    yAxis: Nullable<YAxis>,
+    yAxis: Nullable<YAxis>
   ): OverlayFigure | OverlayFigure[] {
     return (
       overlay.createYAxisFigures?.({

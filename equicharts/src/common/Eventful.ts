@@ -24,7 +24,7 @@ export interface EventDispatcher {
   dispatchEvent: (
     name: EventName,
     event: MouseTouchEvent,
-    other?: number,
+    other?: number
   ) => boolean;
 }
 
@@ -58,7 +58,7 @@ export default abstract class Eventful implements EventDispatcher {
   dispatchEvent(
     name: EventName,
     event: MouseTouchEvent,
-    other?: number,
+    other?: number
   ): boolean {
     const start = this._children.length - 1;
     if (start > -1) {

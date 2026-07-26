@@ -67,7 +67,7 @@ export default class OverlayXAxisView extends OverlayYAxisView<XAxis> {
     _decimalFoldThreshold: number,
     _xAxis: Nullable<XAxis>,
     _yAxis: Nullable<YAxis>,
-    clickInstanceInfo: EventOverlayInfo,
+    clickInstanceInfo: EventOverlayInfo
   ): OverlayFigure[] {
     const figures: OverlayFigure[] = [];
     if (
@@ -85,7 +85,7 @@ export default class OverlayXAxisView extends OverlayYAxisView<XAxis> {
             dateTimeFormat,
             point.timestamp,
             'YYYY-MM-DD HH:mm',
-            FormatDateType.Crosshair,
+            FormatDateType.Crosshair
           );
           figures.push({
             type: 'text',
@@ -121,7 +121,7 @@ export default class OverlayXAxisView extends OverlayYAxisView<XAxis> {
     dateTimeFormat: Intl.DateTimeFormat,
     defaultStyles: OverlayStyle,
     xAxis: Nullable<XAxis>,
-    yAxis: Nullable<YAxis>,
+    yAxis: Nullable<YAxis>
   ): OverlayFigure | OverlayFigure[] {
     return (
       o.createXAxisFigures?.({

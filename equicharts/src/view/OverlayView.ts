@@ -85,8 +85,8 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
           overlay.eventMoveForDrawing(
             this._coordinateToPoint(
               progressInstanceInfo.instance.getOverlay(),
-              event,
-            ),
+              event
+            )
           );
           o.onDrawing?.({
             overlay: o,
@@ -100,7 +100,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
           EventOverlayInfoFigureType.Point,
           key,
           index,
-          0,
+          0
         )(event);
       }
       overlayStore.setHoverInstanceInfo(
@@ -112,7 +112,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
           figureIndex: -1,
           attrsIndex: -1,
         },
-        event,
+        event
       );
       return false;
     })
@@ -152,7 +152,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
             EventOverlayInfoFigureType.Point,
             key,
             index,
-            0,
+            0
           )(event);
         }
         overlayStore.setClickInstanceInfo(
@@ -164,7 +164,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
             figureIndex: -1,
             attrsIndex: -1,
           },
-          event,
+          event
         );
         return false;
       })
@@ -194,7 +194,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
             EventOverlayInfoFigureType.Point,
             `${OVERLAY_FIGURE_KEY_PREFIX}point_${index}`,
             index,
-            0,
+            0
           )(event);
         }
         return false;
@@ -210,7 +210,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
               EventOverlayInfoFigureType.Point,
               `${OVERLAY_FIGURE_KEY_PREFIX}point_${index}`,
               index,
-              0,
+              0
             )(event);
           }
         }
@@ -244,16 +244,14 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
         if (instance !== null) {
           const o = instance.getOverlay();
           if (!o.lock) {
-            if (
-              !(
-                o.onPressedMoving?.({
-                  overlay: o,
-                  figureIndex,
-                  figureKey,
-                  ...event,
-                }) ?? false
-              )
-            ) {
+            if (!(
+              o.onPressedMoving?.({
+                overlay: o,
+                figureIndex,
+                figureKey,
+                ...event,
+              }) ?? false
+            )) {
               const point = this._coordinateToPoint(o, event);
               if (figureType === EventOverlayInfoFigureType.Point) {
                 instance.eventPressedPointMove(point, figureIndex);
@@ -264,7 +262,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
                     .getPane()
                     .getChart()
                     .getChartStore()
-                    .getTimeScaleStore(),
+                    .getTimeScaleStore()
                 );
               }
             }
@@ -281,7 +279,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
     figureKey: string,
     figureIndex: number,
     attrsIndex: number,
-    ignoreEvent?: boolean | OverlayFigureIgnoreEventType[],
+    ignoreEvent?: boolean | OverlayFigureIgnoreEventType[]
   ): EventHandler | undefined {
     let eventHandler;
     if (!overlay.isDrawing()) {
@@ -302,35 +300,35 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
             figureType,
             figureKey,
             figureIndex,
-            attrsIndex,
+            attrsIndex
           ),
           mouseDownEvent: this._figureMouseDownEvent(
             overlay,
             figureType,
             figureKey,
             figureIndex,
-            attrsIndex,
+            attrsIndex
           ),
           mouseClickEvent: this._figureMouseClickEvent(
             overlay,
             figureType,
             figureKey,
             figureIndex,
-            attrsIndex,
+            attrsIndex
           ),
           mouseRightClickEvent: this._figureMouseRightClickEvent(
             overlay,
             figureType,
             figureKey,
             figureIndex,
-            attrsIndex,
+            attrsIndex
           ),
           mouseDoubleClickEvent: this._figureMouseDoubleClickEvent(
             overlay,
             figureType,
             figureKey,
             figureIndex,
-            attrsIndex,
+            attrsIndex
           ),
         };
       }
@@ -349,7 +347,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
           figureType,
           figureKey,
           figureIndex,
-          attrsIndex,
+          attrsIndex
         );
       }
       if (
@@ -361,7 +359,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
           figureType,
           figureKey,
           figureIndex,
-          attrsIndex,
+          attrsIndex
         );
       }
       if (
@@ -373,7 +371,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
           figureType,
           figureKey,
           figureIndex,
-          attrsIndex,
+          attrsIndex
         );
       }
       if (
@@ -385,7 +383,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
           figureType,
           figureKey,
           figureIndex,
-          attrsIndex,
+          attrsIndex
         );
       }
       if (!eventTypes.includes('mouseRightClickEvent')) {
@@ -394,7 +392,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
           figureType,
           figureKey,
           figureIndex,
-          attrsIndex,
+          attrsIndex
         );
       }
     }
@@ -406,7 +404,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
     figureType: EventOverlayInfoFigureType,
     figureKey: string,
     figureIndex: number,
-    attrsIndex: number,
+    attrsIndex: number
   ): MouseTouchEventCallback {
     return (event: MouseTouchEvent) => {
       const pane = this.getWidget().getPane();
@@ -420,7 +418,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
           figureIndex,
           attrsIndex,
         },
-        event,
+        event
       );
       return true;
     };
@@ -431,7 +429,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
     figureType: EventOverlayInfoFigureType,
     figureKey: string,
     figureIndex: number,
-    attrsIndex: number,
+    attrsIndex: number
   ): MouseTouchEventCallback {
     return (event: MouseTouchEvent) => {
       const pane = this.getWidget().getPane();
@@ -457,7 +455,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
     figureType: EventOverlayInfoFigureType,
     figureKey: string,
     figureIndex: number,
-    attrsIndex: number,
+    attrsIndex: number
   ): MouseTouchEventCallback {
     return (event: MouseTouchEvent) => {
       const pane = this.getWidget().getPane();
@@ -472,7 +470,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
           figureIndex,
           attrsIndex,
         },
-        event,
+        event
       );
       return true;
     };
@@ -484,7 +482,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
     figureKey: string,
     figureIndex: number,
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    _attrsIndex: number,
+    _attrsIndex: number
   ): MouseTouchEventCallback {
     return (event: MouseTouchEvent) => {
       const o = overlay.getOverlay();
@@ -499,16 +497,14 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
     figureKey: string,
     figureIndex: number,
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    _attrsIndex: number,
+    _attrsIndex: number
   ): MouseTouchEventCallback {
     return (event: MouseTouchEvent) => {
       const o = overlay.getOverlay();
-      if (
-        !(
-          o.onRightClick?.({ overlay: o, figureIndex, figureKey, ...event }) ??
-          false
-        )
-      ) {
+      if (!(
+        o.onRightClick?.({ overlay: o, figureIndex, figureKey, ...event }) ??
+        false
+      )) {
         const pane = this.getWidget().getPane();
         const overlayStore = pane.getChart().getChartStore().getOverlayStore();
         overlayStore.removeInstance(o);
@@ -519,7 +515,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
 
   private _coordinateToPoint(
     o: Overlay,
-    coordinate: Coordinate,
+    coordinate: Coordinate
   ): Partial<Point> {
     const point: Partial<Point> = {};
     const pane = this.getWidget().getPane();
@@ -536,7 +532,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
       point.timestamp = timestamp;
       // if (timestamp === undefined) {  Remove Drawing from from last candles of the Data
       //   const index =
-      //     dataIndex < 0  
+      //     dataIndex < 0
       //       ? 0
       //       : dataIndex > tvlines.length - 1
       //         ? tvlines.length - 1
@@ -618,7 +614,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
   override dispatchEvent(
     name: EventName,
     event: MouseTouchEvent,
-    other?: number,
+    other?: number
   ): boolean {
     if (
       this.getWidget()
@@ -668,11 +664,11 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
         prev.min = Math.min(prev.min, precision);
         prev.excludePriceVolumeMax = Math.max(
           prev.excludePriceVolumeMax,
-          precision,
+          precision
         );
         prev.excludePriceVolumeMin = Math.min(
           prev.excludePriceVolumeMin,
-          precision,
+          precision
         );
         return prev;
       },
@@ -682,7 +678,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
         min: Math.min(precision.price, precision.volume),
         excludePriceVolumeMax: Number.MIN_SAFE_INTEGER,
         excludePriceVolumeMin: Number.MAX_SAFE_INTEGER,
-      },
+      }
     );
     overlays.forEach((overlay) => {
       if (overlay.getOverlay().visible) {
@@ -701,7 +697,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
           yAxis,
           hoverInstanceInfo,
           clickInstanceInfo,
-          timeScaleStore,
+          timeScaleStore
         );
       }
     });
@@ -725,7 +721,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
           yAxis,
           hoverInstanceInfo,
           clickInstanceInfo,
-          timeScaleStore,
+          timeScaleStore
         );
       }
     }
@@ -746,7 +742,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
     yAxis: Nullable<YAxis>,
     hoverInstanceInfo: EventOverlayInfo,
     clickInstanceInfo: EventOverlayInfo,
-    timeScaleStore: TimeScaleStore,
+    timeScaleStore: TimeScaleStore
   ): void {
     const o = overlay.getOverlay();
     const { points } = o;
@@ -777,8 +773,8 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
           dateTimeFormat,
           defaultStyles,
           xAxis,
-          yAxis,
-        ),
+          yAxis
+        )
       );
       this.drawFigures(ctx, overlay, figures, defaultStyles);
     }
@@ -796,7 +792,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
       xAxis,
       yAxis,
       hoverInstanceInfo,
-      clickInstanceInfo,
+      clickInstanceInfo
     );
   }
 
@@ -804,7 +800,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
     ctx: CanvasRenderingContext2D,
     overlay: OverlayImp,
     figures: OverlayFigure[],
-    defaultStyles: OverlayStyle,
+    defaultStyles: OverlayStyle
   ): void {
     const o = overlay.getOverlay();
     figures.forEach((figure, figureIndex) => {
@@ -818,7 +814,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
           figure.key ?? '',
           figureIndex,
           attrsIndex,
-          ignoreEvent,
+          ignoreEvent
         );
         const ss = { ...defaultStyles[type], ...o.styles?.[type], ...styles };
         this.createFigure(
@@ -827,7 +823,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
             attrs: ats,
             styles: ss,
           },
-          events,
+          events
         )?.draw(ctx);
       });
     });
@@ -835,14 +831,14 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
 
   protected getCompleteOverlays(
     overlayStore: OverlayStore,
-    paneId: string,
+    paneId: string
   ): OverlayImp[] {
     return overlayStore.getInstances(paneId);
   }
 
   protected getProgressOverlay(
     info: ProgressOverlayInfo,
-    paneId: string,
+    paneId: string
   ): Nullable<OverlayImp> {
     if (info.paneId === paneId) {
       return info.instance;
@@ -861,7 +857,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
     dateTimeFormat: Intl.DateTimeFormat,
     defaultStyles: OverlayStyle,
     xAxis: Nullable<XAxis>,
-    yAxis: Nullable<YAxis>,
+    yAxis: Nullable<YAxis>
   ): OverlayFigure | OverlayFigure[] {
     return (
       o.createPointFigures?.({
@@ -894,7 +890,7 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
     _xAxis: Nullable<XAxis>,
     _yAxis: Nullable<YAxis>,
     hoverInstanceInfo: EventOverlayInfo,
-    clickInstanceInfo: EventOverlayInfo,
+    clickInstanceInfo: EventOverlayInfo
   ): void {
     const o = overlay.getOverlay();
     if (o.needDefaultPointFigure) {
@@ -932,8 +928,8 @@ export default class OverlayView<C extends Axis = YAxis> extends View<C> {
               EventOverlayInfoFigureType.Point,
               `${OVERLAY_FIGURE_KEY_PREFIX}point_${index}`,
               index,
-              0,
-            ),
+              0
+            )
           )?.draw(ctx);
           this.createFigure({
             name: 'circle',

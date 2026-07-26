@@ -110,7 +110,7 @@ export const mapping = {
 };
 
 export function createSingleLineOptions(
-  locale: string,
+  locale: string
 ): SelectDataSourceItem[] {
   return [
     {

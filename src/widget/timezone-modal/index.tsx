@@ -17,7 +17,7 @@ const TimezoneModal: Component<TimezoneModalProps> = (props) => {
   const [innerTimezone, setInnerTimezone] = createSignal(props.timezone);
 
   const timezoneOptions = createMemo(() =>
-    createTimezoneSelectOptions(props.locale),
+    createTimezoneSelectOptions(props.locale)
   );
 
   return (

@@ -40,9 +40,9 @@ const fibonacciDiagonal: OverlayTemplate = {
           const y = coordinates[1].y + yDif * percent;
           const value = formatThousands(
             ((points[1].value ?? 0) + valueDif * percent).toFixed(
-              precision.price,
+              precision.price
             ),
-            thousandsSeparator,
+            thousandsSeparator
           );
           lines.push({
             coordinates: [

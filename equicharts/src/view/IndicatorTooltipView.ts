@@ -105,7 +105,7 @@ export default class IndicatorTooltipView extends View<YAxis> {
         offsetLeft,
         offsetTop,
         bounding.width - offsetRight,
-        defaultStyles,
+        defaultStyles
       );
     }
   }
@@ -123,7 +123,7 @@ export default class IndicatorTooltipView extends View<YAxis> {
     left: number,
     top: number,
     maxWidth: number,
-    styles: IndicatorStyle,
+    styles: IndicatorStyle
   ): number {
     const tooltipStyles = styles.tooltip;
     if (this.isDrawTooltip(crosshair, tooltipStyles)) {
@@ -144,7 +144,7 @@ export default class IndicatorTooltipView extends View<YAxis> {
           customApi,
           thousandsSeparator,
           decimalFoldThreshold,
-          styles,
+          styles
         );
         const nameValid = name.length > 0;
         const legendValid = legends.length > 0;
@@ -160,7 +160,7 @@ export default class IndicatorTooltipView extends View<YAxis> {
             indicator.name,
             left,
             prevRowHeight,
-            maxWidth,
+            maxWidth
           );
 
           if (nameValid) {
@@ -180,7 +180,7 @@ export default class IndicatorTooltipView extends View<YAxis> {
               left,
               prevRowHeight,
               maxWidth,
-              tooltipTextStyles,
+              tooltipTextStyles
             );
           }
 
@@ -193,7 +193,7 @@ export default class IndicatorTooltipView extends View<YAxis> {
             indicator.name,
             left,
             prevRowHeight,
-            maxWidth,
+            maxWidth
           );
 
           if (legendValid) {
@@ -204,7 +204,7 @@ export default class IndicatorTooltipView extends View<YAxis> {
               left,
               prevRowHeight,
               maxWidth,
-              tooltipStyles.text,
+              tooltipStyles.text
             );
           }
 
@@ -218,7 +218,7 @@ export default class IndicatorTooltipView extends View<YAxis> {
             indicator.name,
             left,
             prevRowHeight,
-            maxWidth,
+            maxWidth
           );
           top = coordinate.y + prevRowHeight;
         }
@@ -236,7 +236,7 @@ export default class IndicatorTooltipView extends View<YAxis> {
     indicatorName: string,
     left: number,
     prevRowHeight: number,
-    maxWidth: number,
+    maxWidth: number
   ): number {
     if (icons.length > 0) {
       let width = 0;
@@ -264,7 +264,7 @@ export default class IndicatorTooltipView extends View<YAxis> {
           marginRight;
         height = Math.max(
           height,
-          marginTop + paddingTop + size + paddingBottom + marginBottom,
+          marginTop + paddingTop + size + paddingBottom + marginBottom
         );
       });
       if (coordinate.x + width > maxWidth) {
@@ -325,7 +325,7 @@ export default class IndicatorTooltipView extends View<YAxis> {
               indicatorName,
               iconId: icon.id,
             }),
-          },
+          }
         )?.draw(ctx);
         coordinate.x +=
           marginLeft +
@@ -345,7 +345,7 @@ export default class IndicatorTooltipView extends View<YAxis> {
     left: number,
     prevRowHeight: number,
     maxWidth: number,
-    styles: TooltipTextStyle,
+    styles: TooltipTextStyle
   ): number {
     if (legends.length > 0) {
       const {
@@ -416,7 +416,7 @@ export default class IndicatorTooltipView extends View<YAxis> {
     customApi: CustomApi,
     thousandsSeparator: string,
     decimalFoldThreshold: number,
-    styles: IndicatorStyle,
+    styles: IndicatorStyle
   ): IndicatorTooltipData {
     const tooltipStyles = styles.tooltip;
     const name = tooltipStyles.showName ? indicator.shortName : '';
@@ -446,7 +446,7 @@ export default class IndicatorTooltipView extends View<YAxis> {
         styles,
         (
           figure: IndicatorFigure,
-          figureStyles: Required<IndicatorFigureStyle>,
+          figureStyles: Required<IndicatorFigureStyle>
         ) => {
           if (isString(figure.title)) {
             const color = figureStyles.color;
@@ -463,15 +463,15 @@ export default class IndicatorTooltipView extends View<YAxis> {
                 text: formatFoldDecimal(
                   formatThousands(
                     (value ?? tooltipStyles.defaultValue) as string,
-                    thousandsSeparator,
+                    thousandsSeparator
                   ),
-                  decimalFoldThreshold,
+                  decimalFoldThreshold
                 ),
                 color,
               },
             });
           }
-        },
+        }
       );
       tooltipData.values = legends;
     }
@@ -522,7 +522,7 @@ export default class IndicatorTooltipView extends View<YAxis> {
           }
           value.text = formatFoldDecimal(
             formatThousands(value.text, thousandsSeparator),
-            decimalFoldThreshold,
+            decimalFoldThreshold
           );
           optimizedLegends.push({ title, value });
         });
@@ -533,7 +533,7 @@ export default class IndicatorTooltipView extends View<YAxis> {
   }
 
   protected classifyTooltipIcons(
-    icons: TooltipIconStyle[],
+    icons: TooltipIconStyle[]
   ): TooltipIconStyle[][] {
     const leftIcons: TooltipIconStyle[] = [];
     const middleIcons: TooltipIconStyle[] = [];

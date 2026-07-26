@@ -126,7 +126,7 @@ const PeriodBar: Component<PeriodBarProps> = (props) => {
                           type: data.type,
                         },
                       },
-                      data.key,
+                      data.key
                     );
                     setPopoverKey('');
                   }}

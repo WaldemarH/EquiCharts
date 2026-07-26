@@ -65,7 +65,7 @@ export default class CandleHeikinAshiView extends ChildrenView {
       if (visibleDataList.length > 0) {
         const filteredData = visibleDataList.map((each) => {
           const matchingElement = hAData.find(
-            (element) => element.timestamp === each?.data?.timestamp,
+            (element) => element.timestamp === each?.data?.timestamp
           );
           // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
           return matchingElement
@@ -120,7 +120,7 @@ export default class CandleHeikinAshiView extends ChildrenView {
   }
 
   protected getCandleBarOptions(
-    chartStore: ChartStore,
+    chartStore: ChartStore
   ): Nullable<CandleBarOptions> {
     const candleStyles = chartStore.getStyles().candle;
     return {
@@ -133,7 +133,7 @@ export default class CandleHeikinAshiView extends ChildrenView {
     x: number,
     priceY: number[],
     barSpace: BarSpace,
-    colors: string[],
+    colors: string[]
   ): Array<FigureCreate<RectAttrs | RectAttrs[], Partial<RectStyle>>> {
     return [
       {

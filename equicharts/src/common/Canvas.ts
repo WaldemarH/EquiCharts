@@ -69,7 +69,7 @@ export default class Canvas {
           this._resizeObserver = new ResizeObserver(
             (entries: ResizeObserverEntry[]) => {
               const entry = entries.find(
-                (entry: ResizeObserverEntry) => entry.target === this._element,
+                (entry: ResizeObserverEntry) => entry.target === this._element
               );
               const size = entry?.devicePixelContentBoxSize?.[0];
               if (isValid(size)) {
@@ -82,14 +82,14 @@ export default class Canvas {
                   this._resetPixelRatio();
                 }
               }
-            },
+            }
           );
           this._resizeObserver.observe(this._element, {
             box: 'device-pixel-content-box',
           });
         } else {
           this._mediaQueryList = window.matchMedia(
-            `(resolution: ${getPixelRatio(this._element)}dppx)`,
+            `(resolution: ${getPixelRatio(this._element)}dppx)`
           );
           this._mediaQueryList.addListener(this._mediaQueryListener);
         }

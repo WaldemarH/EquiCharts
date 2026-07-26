@@ -53,7 +53,7 @@ const stoch: IndicatorTemplate<Kdj> = {
         const lhn = getMaxMin<TViewData>(
           dataList.slice(i - (params[0] - 1), i + 1),
           'high',
-          'low',
+          'low'
         );
         const hn = lhn[0];
         const ln = lhn[1];

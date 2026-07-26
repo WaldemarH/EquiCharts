@@ -54,8 +54,9 @@ import {
 import { getInitialOptions } from './base/initFunctions';
 import { getMoveToADateOverlay } from './extension/chartOverlays/moveToADate';
 
-export interface ChartProComponentProps
-  extends Required<Omit<ChartProOptions, 'container'>> {
+export interface ChartProComponentProps extends Required<
+  Omit<ChartProOptions, 'container'>
+> {
   ref: (chart: ChartPro) => void;
 }
 
@@ -68,7 +69,7 @@ function createIndicator(
   widget: Nullable<Chart>,
   indicatorName: string,
   isStack?: boolean,
-  paneOptions?: PaneOptions,
+  paneOptions?: PaneOptions
 ): Nullable<string> {
   if (indicatorName === 'VOL') {
     paneOptions = { gap: { bottom: 2 }, ...paneOptions };
@@ -93,7 +94,7 @@ function createIndicator(
         },
       },
       isStack,
-      paneOptions,
+      paneOptions
     ) ?? null
   );
 }
@@ -142,7 +143,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
   const [screenshotUrl, setScreenshotUrl] = createSignal('');
 
   const [drawingBarVisible, setDrawingBarVisible] = createSignal(
-    props.drawingBarVisible,
+    props.drawingBarVisible
   );
 
   const [symbolSearchModalVisible, setSymbolSearchModalVisible] =
@@ -210,7 +211,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
         to = to - dif * 60 * 60 * 24;
         const newDate = new Date(to);
         to = new Date(
-          `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()}`,
+          `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()}`
         ).getTime();
         from = count * period.multiplier * 7 * 24 * 60 * 60 * 1000;
         break;
@@ -223,7 +224,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
         from = count * period.multiplier * 30 * 24 * 60 * 60 * 1000;
         const fromDate = new Date(from);
         from = new Date(
-          `${fromDate.getFullYear()}-${fromDate.getMonth() + 1}-01`,
+          `${fromDate.getFullYear()}-${fromDate.getMonth() + 1}-01`
         ).getTime();
         break;
       }
@@ -248,7 +249,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
           dateTimeFormat: Intl.DateTimeFormat,
           timestamp,
           format: string,
-          type: FormatDateType,
+          type: FormatDateType
         ) => {
           const p = period();
           switch (p.timespan) {
@@ -257,13 +258,13 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
                 return utils.formatDate(
                   dateTimeFormat,
                   timestamp,
-                  'DD LL HH:mm',
+                  'DD LL HH:mm'
                 );
               }
               return utils.formatDate(
                 dateTimeFormat,
                 timestamp,
-                'DD LL YYYY HH:mm',
+                'DD LL YYYY HH:mm'
               );
             }
             case 'hour': {
@@ -271,13 +272,13 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
                 return utils.formatDate(
                   dateTimeFormat,
                   timestamp,
-                  'DD LL YYYY HH:mm',
+                  'DD LL YYYY HH:mm'
                 );
               }
               return utils.formatDate(
                 dateTimeFormat,
                 timestamp,
-                'DD LL YYYY HH:mm',
+                'DD LL YYYY HH:mm'
               );
             }
             case 'day':
@@ -299,7 +300,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
           return utils.formatDate(
             dateTimeFormat,
             timestamp,
-            'YYYY LL DD HH:mm',
+            'YYYY LL DD HH:mm'
           );
         },
       },
@@ -308,7 +309,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
       const watermarkContainer = widget.getDom('candle_pane', DomPosition.Main);
       const symbolHeadingElementContainer = widget.getDom(
         'candle_pane',
-        DomPosition.Main,
+        DomPosition.Main
       );
       if (symbolHeadingElementContainer) {
         symbolHeadingElement = document.createElement('div');
@@ -322,7 +323,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
       }
       const priceUnitContainer = widget.getDom(
         'candle_pane',
-        DomPosition.YAxis,
+        DomPosition.YAxis
       );
       const buttonContainer = widget.getDom('candle_pane', DomPosition.YAxis);
       priceUnitDom = createPriceUnitElement();
@@ -332,14 +333,14 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
         setIsLogarithmic,
         isLogarithmic,
         isPercentage,
-        handleSelectedYAxisDataSource,
+        handleSelectedYAxisDataSource
       );
       percentage = createPercentageButton(
         setIsPercentage,
         isPercentage,
         isLogarithmic,
         logarthimic,
-        handleSelectedYAxisDataSource,
+        handleSelectedYAxisDataSource
       );
       buttonsDiv.appendChild(logarthimic);
       buttonsDiv.appendChild(percentage);
@@ -368,7 +369,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
           symbol(),
           p,
           from,
-          to,
+          to
         );
         widget?.applyMoreData(TViewDataList, TViewDataList.length > 0);
         loading = false;
@@ -381,21 +382,21 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
           case 'visible': {
             widget?.overrideIndicator(
               { name: data.indicatorName, visible: true },
-              data.paneId,
+              data.paneId
             );
             break;
           }
           case 'invisible': {
             widget?.overrideIndicator(
               { name: data.indicatorName, visible: false },
-              data.paneId,
+              data.paneId
             );
             break;
           }
           case 'setting': {
             const indicator = widget?.getIndicatorByPaneId(
               data.paneId,
-              data.indicatorName,
+              data.indicatorName
             ) as Indicator;
             setIndicatorSettingModalParams({
               visible: true,
@@ -411,7 +412,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
               widget?.removeIndicator('candle_pane', data.indicatorName);
               newMainIndicators.splice(
                 newMainIndicators.indexOf(data.indicatorName),
-                1,
+                1
               );
               setMainIndicators(newMainIndicators);
             } else {
@@ -448,7 +449,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
     }
     widget?.setPriceVolumePrecision(
       s?.pricePrecision ?? 2,
-      s?.volumePrecision ?? 0,
+      s?.volumePrecision ?? 0
     );
   });
 
@@ -467,7 +468,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
           s,
           p,
           from,
-          to,
+          to
         );
         widget?.applyNewData(TViewDataList, TViewDataList.length > 0);
         props.datafeed.subscribe(s, p, (data) => {
@@ -602,7 +603,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
   const handleMoveToATimeStamp = (timeData: number) => {
     widget?.scrollToTimestamp(
       addPeriodsToTimestamp(period(), timeData, 100),
-      2,
+      2
     );
     widget?.setYScrolling(yScrolling());
     registerOverlay(getMoveToADateOverlay(timeData));
@@ -617,7 +618,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
   };
 
   const handleSelectedYAxisDataSource = (
-    style: string | DeepPartial<Styles>,
+    style: string | DeepPartial<Styles>
   ) => {
     widget?.setStyles(style);
     console.log(style);
@@ -715,7 +716,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
               lodashSet(
                 style,
                 key,
-                utils.formatValue(widgetDefaultStyles(), key),
+                utils.formatValue(widgetDefaultStyles(), key)
               );
             });
             widget?.setStyles(style);
@@ -747,7 +748,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
             const modalParams = indicatorSettingModalParams();
             widget?.overrideIndicator(
               { name: modalParams.indicatorName, calcParams: params },
-              modalParams.paneId,
+              modalParams.paneId
             );
           }}
         />
@@ -762,7 +763,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
         onMenuClick={async () => {
           try {
             await startTransition(() =>
-              setDrawingBarVisible(!drawingBarVisible()),
+              setDrawingBarVisible(!drawingBarVisible())
             );
             widget?.resize();
           } catch (e) {}
@@ -785,7 +786,7 @@ const ChartProComponent: Component<ChartProComponentProps> = (props) => {
             const url = widget.getConvertPictureUrl(
               true,
               'jpeg',
-              props.theme === 'dark' ? '#151517' : '#e5e5e5',
+              props.theme === 'dark' ? '#151517' : '#e5e5e5'
             );
             setScreenshotUrl(url);
           }

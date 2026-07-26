@@ -29,7 +29,7 @@ import CandleVisibleLastPriceLabelView from '../view/CandleVisibleLastPriceLabel
 export default class YAxisWidget extends DrawWidget<DrawPane<YAxis>> {
   private readonly _yAxisView = new YAxisView(this);
   private readonly _candleLastPriceLabelView = new CandleLastPriceLabelView(
-    this,
+    this
   );
   private readonly _candleVisibleLastPriceLabelView =
     new CandleVisibleLastPriceLabelView(this);

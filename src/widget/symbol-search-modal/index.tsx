@@ -18,7 +18,7 @@ const SymbolSearchModal: Component<SymbolSearchModalProps> = (props) => {
 
   const [symbolList] = createResource(
     value,
-    props.datafeed.searchSymbols.bind(props.datafeed),
+    props.datafeed.searchSymbols.bind(props.datafeed)
   );
 
   return (

@@ -30,7 +30,7 @@ import { isValid } from './utils/typeChecks';
 
 export type MouseTouchEventCallback = (
   event: MouseTouchEvent,
-  other?: number,
+  other?: number
 ) => boolean;
 
 export interface EventHandler {
@@ -179,7 +179,7 @@ export default class SyntheticEvent {
   constructor(
     target: HTMLElement,
     handler: EventHandler,
-    options: EventOptions,
+    options: EventOptions
   ) {
     this._target = target;
     this._handler = handler;
@@ -264,7 +264,7 @@ export default class SyntheticEvent {
 
     this._processEvent(
       this._makeCompatEvent(enterEvent),
-      this._handler.mouseEnterEvent,
+      this._handler.mouseEnterEvent
     );
     this._acceptMouseLeave = true;
   }
@@ -306,7 +306,7 @@ export default class SyntheticEvent {
 
     this._processEvent(
       this._makeCompatEvent(moveEvent),
-      this._handler.mouseMoveEvent,
+      this._handler.mouseMoveEvent
     );
     this._acceptMouseLeave = true;
   }
@@ -322,7 +322,7 @@ export default class SyntheticEvent {
       }
       this._handler.mouseWheelHortEvent(
         this._makeCompatEvent(wheelEvent),
-        -wheelEvent.deltaX,
+        -wheelEvent.deltaX
       );
     } else {
       if (!isValid(this._handler.mouseWheelVertEvent)) {
@@ -348,7 +348,7 @@ export default class SyntheticEvent {
         const scale = Math.sign(deltaY) * Math.min(1, Math.abs(deltaY));
         this._handler.mouseWheelVertEvent(
           this._makeCompatEvent(wheelEvent),
-          scale,
+          scale
         );
       }
     }
@@ -361,7 +361,7 @@ export default class SyntheticEvent {
   private _touchMoveHandler(moveEvent: TouchEvent): void {
     const touch = this._touchWithId(
       moveEvent.changedTouches,
-      this._activeTouchId,
+      this._activeTouchId
     );
     if (touch === null) {
       return;
@@ -382,7 +382,7 @@ export default class SyntheticEvent {
 
     const moveInfo = this._mouseTouchMoveWithDownInfo(
       this._getCoordinate(touch),
-      this._touchMoveStartCoordinate!,
+      this._touchMoveStartCoordinate!
     );
     const { xOffset, yOffset, manhattanDistance } = moveInfo;
 
@@ -425,7 +425,7 @@ export default class SyntheticEvent {
     if (!this._preventTouchDragProcess) {
       this._processEvent(
         this._makeCompatEvent(moveEvent, touch),
-        this._handler.touchMoveEvent,
+        this._handler.touchMoveEvent
       );
 
       // we should prevent default in case of touch only
@@ -441,7 +441,7 @@ export default class SyntheticEvent {
 
     const moveInfo = this._mouseTouchMoveWithDownInfo(
       this._getCoordinate(moveEvent),
-      this._mouseMoveStartCoordinate!,
+      this._mouseMoveStartCoordinate!
     );
     const { manhattanDistance } = moveInfo;
 
@@ -454,14 +454,14 @@ export default class SyntheticEvent {
       // if this._cancelClick is true, that means that minimum manhattan distance is already exceeded
       this._processEvent(
         this._makeCompatEvent(moveEvent),
-        this._handler.pressedMouseMoveEvent,
+        this._handler.pressedMouseMoveEvent
       );
     }
   }
 
   private _mouseTouchMoveWithDownInfo(
     currentCoordinate: Coordinate,
-    startCoordinate: Coordinate,
+    startCoordinate: Coordinate
   ): MouseTouchMoveWithDownInfo {
     const xOffset = Math.abs(startCoordinate.x - currentCoordinate.x);
     const yOffset = Math.abs(startCoordinate.y - currentCoordinate.y);
@@ -477,7 +477,7 @@ export default class SyntheticEvent {
    * We're subscribing on mouseleave, but this event is actually fired on mouseup outside of the browser's border.
    */
   private readonly _onFirefoxOutsideMouseUp = (
-    mouseUpEvent: MouseEvent,
+    mouseUpEvent: MouseEvent
   ): void => {
     this._mouseUpHandler(mouseUpEvent);
   };
@@ -490,7 +490,7 @@ export default class SyntheticEvent {
    * https://developer.apple.com/forums/thread/125073
    */
   private readonly _onMobileSafariDoubleClick = (
-    dblClickEvent: MouseEvent,
+    dblClickEvent: MouseEvent
   ): void => {
     if (this._firesTouchEvents(dblClickEvent)) {
       ++this._tapCount;
@@ -498,7 +498,7 @@ export default class SyntheticEvent {
       if (this._tapTimeoutId !== null && this._tapCount > 1) {
         const { manhattanDistance } = this._mouseTouchMoveWithDownInfo(
           this._getCoordinate(dblClickEvent),
-          this._tapCoordinate,
+          this._tapCoordinate
         );
         if (
           manhattanDistance < ManhattanDistance.DoubleTap &&
@@ -506,7 +506,7 @@ export default class SyntheticEvent {
         ) {
           this._processEvent(
             this._makeCompatEvent(dblClickEvent),
-            this._handler.doubleTapEvent,
+            this._handler.doubleTapEvent
           );
         }
         this._resetTapTimeout();
@@ -517,7 +517,7 @@ export default class SyntheticEvent {
       if (this._clickTimeoutId !== null && this._clickCount > 1) {
         const { manhattanDistance } = this._mouseTouchMoveWithDownInfo(
           this._getCoordinate(dblClickEvent),
-          this._clickCoordinate,
+          this._clickCoordinate
         );
         if (
           manhattanDistance < ManhattanDistance.DoubleClick &&
@@ -525,7 +525,7 @@ export default class SyntheticEvent {
         ) {
           this._processEvent(
             this._makeCompatEvent(dblClickEvent),
-            this._handler.mouseDoubleClickEvent,
+            this._handler.mouseDoubleClickEvent
           );
         }
         this._resetClickTimeout();
@@ -537,7 +537,7 @@ export default class SyntheticEvent {
   private _touchEndHandler(touchEndEvent: TouchEvent): void {
     let touch = this._touchWithId(
       touchEndEvent.changedTouches,
-      this._activeTouchId,
+      this._activeTouchId
     );
     if (touch === null && touchEndEvent.touches.length === 0) {
       // something went wrong, somehow we missed the required touchend event
@@ -567,7 +567,7 @@ export default class SyntheticEvent {
       // check that both clicks are near enough
       const { manhattanDistance } = this._mouseTouchMoveWithDownInfo(
         this._getCoordinate(touch),
-        this._tapCoordinate,
+        this._tapCoordinate
       );
       if (manhattanDistance < ManhattanDistance.DoubleTap && !this._cancelTap) {
         this._processEvent(compatEvent, this._handler.doubleTapEvent);
@@ -619,7 +619,7 @@ export default class SyntheticEvent {
       const rootElement = this._target.ownerDocument.documentElement;
       rootElement.removeEventListener(
         'mouseleave',
-        this._onFirefoxOutsideMouseUp,
+        this._onFirefoxOutsideMouseUp
       );
     }
 
@@ -634,7 +634,7 @@ export default class SyntheticEvent {
       // check that both clicks are near enough
       const { manhattanDistance } = this._mouseTouchMoveWithDownInfo(
         this._getCoordinate(mouseUpEvent),
-        this._clickCoordinate,
+        this._clickCoordinate
       );
       if (
         manhattanDistance < ManhattanDistance.DoubleClick &&
@@ -688,7 +688,7 @@ export default class SyntheticEvent {
       this._unsubscribeRootTouchEvents = () => {
         rootElement.removeEventListener(
           'touchmove',
-          boundTouchMoveWithDownHandler,
+          boundTouchMoveWithDownHandler
         );
         rootElement.removeEventListener('touchend', boundTouchEndHandler);
       };
@@ -703,20 +703,20 @@ export default class SyntheticEvent {
       this._clearLongTapTimeout();
       this._longTapTimeoutId = setTimeout(
         this._longTapHandler.bind(this, downEvent),
-        Delay.LongTap,
+        Delay.LongTap
       );
     }
 
     this._processEvent(
       this._makeCompatEvent(downEvent, touch),
-      this._handler.touchStartEvent,
+      this._handler.touchStartEvent
     );
 
     if (this._tapTimeoutId === null) {
       this._tapCount = 0;
       this._tapTimeoutId = setTimeout(
         this._resetTapTimeout.bind(this),
-        Delay.ResetClick,
+        Delay.ResetClick
       );
       this._tapCoordinate = this._getCoordinate(touch);
     }
@@ -727,7 +727,7 @@ export default class SyntheticEvent {
       this._preventDefault(downEvent);
       this._processEvent(
         this._makeCompatEvent(downEvent),
-        this._handler.mouseRightClickEvent,
+        this._handler.mouseRightClickEvent
       );
       return;
     }
@@ -758,7 +758,7 @@ export default class SyntheticEvent {
       this._unsubscribeRootMouseEvents = () => {
         rootElement.removeEventListener(
           'mousemove',
-          boundMouseMoveWithDownHandler,
+          boundMouseMoveWithDownHandler
         );
         rootElement.removeEventListener('mouseup', boundMouseUpHandler);
       };
@@ -775,14 +775,14 @@ export default class SyntheticEvent {
 
     this._processEvent(
       this._makeCompatEvent(downEvent),
-      this._handler.mouseDownEvent,
+      this._handler.mouseDownEvent
     );
 
     if (this._clickTimeoutId === null) {
       this._clickCount = 0;
       this._clickTimeoutId = setTimeout(
         this._resetClickTimeout.bind(this),
-        Delay.ResetClick,
+        Delay.ResetClick
       );
       this._clickCoordinate = this._getCoordinate(downEvent);
     }
@@ -791,13 +791,13 @@ export default class SyntheticEvent {
   private _init(): void {
     this._target.addEventListener(
       'mouseenter',
-      this._mouseEnterHandler.bind(this),
+      this._mouseEnterHandler.bind(this)
     );
 
     // Do not show context menu when something went wrong
     this._target.addEventListener(
       'touchcancel',
-      this._clearLongTapTimeout.bind(this),
+      this._clearLongTapTimeout.bind(this)
     );
 
     {
@@ -841,24 +841,24 @@ export default class SyntheticEvent {
       this._unsubscribeMobileSafariEvents = () => {
         this._target.removeEventListener(
           'dblclick',
-          this._onMobileSafariDoubleClick,
+          this._onMobileSafariDoubleClick
         );
       };
       this._target.addEventListener(
         'dblclick',
-        this._onMobileSafariDoubleClick,
+        this._onMobileSafariDoubleClick
       );
     }
 
     this._target.addEventListener(
       'mouseleave',
-      this._mouseLeaveHandler.bind(this),
+      this._mouseLeaveHandler.bind(this)
     );
 
     this._target.addEventListener(
       'touchstart',
       this._touchStartHandler.bind(this),
-      { passive: true },
+      { passive: true }
     );
 
     this._target.addEventListener('mousedown', (e: MouseEvent) => {
@@ -872,7 +872,7 @@ export default class SyntheticEvent {
 
     this._target.addEventListener(
       'mousedown',
-      this._mouseDownHandler.bind(this),
+      this._mouseDownHandler.bind(this)
     );
     this._initPinch();
 
@@ -898,7 +898,7 @@ export default class SyntheticEvent {
       (event: TouchEvent) => {
         this._checkPinchState(event.touches);
       },
-      { passive: true },
+      { passive: true }
     );
 
     this._target.addEventListener(
@@ -913,17 +913,17 @@ export default class SyntheticEvent {
         if (isValid(this._handler.pinchEvent)) {
           const currentDistance = this._getTouchDistance(
             event.touches[0],
-            event.touches[1],
+            event.touches[1]
           );
           const scale = currentDistance / this._startPinchDistance;
           this._handler.pinchEvent(
             { ...this._startPinchMiddleCoordinate, pageX: 0, pageY: 0 },
-            scale,
+            scale
           );
           this._preventDefault(event);
         }
       },
-      { passive: false },
+      { passive: false }
     );
 
     this._target.addEventListener('touchend', (event: TouchEvent) => {
@@ -988,7 +988,7 @@ export default class SyntheticEvent {
 
     this._processEvent(
       this._makeCompatEvent(event),
-      this._handler.mouseLeaveEvent,
+      this._handler.mouseLeaveEvent
     );
 
     // accept all mouse leave events if it's not an iOS device
@@ -1003,7 +1003,7 @@ export default class SyntheticEvent {
 
     this._processEvent(
       this._makeCompatEvent(event, touch),
-      this._handler.longTapEvent,
+      this._handler.longTapEvent
     );
     this._cancelTap = true;
 
@@ -1028,14 +1028,14 @@ export default class SyntheticEvent {
 
   private _processEvent(
     event: MouseTouchEvent,
-    callback?: MouseTouchEventCallback,
+    callback?: MouseTouchEventCallback
   ): void {
     callback?.call(this._handler, event);
   }
 
   private _makeCompatEvent(
     event: MouseEvent | TouchEvent,
-    touch?: Touch,
+    touch?: Touch
   ): MouseTouchEvent {
     // TouchEvent has no clientX/Y coordinates:
     // We have to use the last Touch instead
@@ -1088,7 +1088,7 @@ export default class SyntheticEvent {
 
   private _touchWithId(
     touches: TouchList,
-    id: Nullable<number>,
+    id: Nullable<number>
   ): Nullable<Touch> {
     for (let i = 0; i < touches.length; ++i) {
       if (touches[i].identifier === id) {

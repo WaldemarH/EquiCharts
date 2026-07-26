@@ -27,7 +27,7 @@ export default class XAxisPane extends DrawPane<XAxis> {
   }
 
   override createMainWidget(
-    container: HTMLElement,
+    container: HTMLElement
   ): DrawWidget<DrawPane<XAxis>> {
     return new XAxisWidget(container, this);
   }

@@ -22,11 +22,11 @@
 export function binarySearchNearest<T>(
   dataList: T[],
   valueKey: keyof T,
-  targetValue: any,
+  targetValue: any
 ): number {
   let left = 0;
   let right = 0;
-  for (right = dataList.length - 1; left !== right; ) {
+  for (right = dataList.length - 1; left !== right;) {
     const midIndex = Math.floor((right + left) / 2);
     const mid = right - left;
     const midValue = dataList[midIndex][valueKey];
@@ -117,7 +117,7 @@ export function getPrecision(value: number): number {
 export function getMaxMin<D>(
   dataList: D[],
   maxKey: keyof D,
-  minKey: keyof D,
+  minKey: keyof D
 ): number[] {
   const maxMin = [Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER];
   dataList.forEach((data) => {

@@ -32,7 +32,7 @@ export default abstract class Pane implements Updater {
     rootContainer: HTMLElement,
     afterElement: Nullable<HTMLElement>,
     chart: Chart,
-    id: string,
+    id: string
   ) {
     this._chart = chart;
     this._id = id;
@@ -41,7 +41,7 @@ export default abstract class Pane implements Updater {
 
   private _init(
     rootContainer: HTMLElement,
-    afterElement: Nullable<HTMLElement>,
+    afterElement: Nullable<HTMLElement>
   ): void {
     this._rootContainer = rootContainer;
     this._container = createDom('div', {
@@ -82,7 +82,7 @@ export default abstract class Pane implements Updater {
     this.updateImp(
       level ?? UpdateLevel.Drawer,
       this._container,
-      this._bounding,
+      this._bounding
     );
   }
 
@@ -97,6 +97,6 @@ export default abstract class Pane implements Updater {
   abstract updateImp(
     level: UpdateLevel,
     container: HTMLElement,
-    bounding: Bounding,
+    bounding: Bounding
   ): void;
 }

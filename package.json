@@ -45,17 +45,17 @@
     "format": "prettier --write \"src/**/*.{js,ts,jsx,tsx,json,md}\""
   },
   "dependencies": {
-    "lodash": "^4.17.21",
-    "solid-js": "^1.8.19"
+    "lodash": "^4.18.1",
+    "solid-js": "^1.9.14"
   },
   "devDependencies": {
-    "@types/lodash": "^4.17.7",
+    "@types/lodash": "^4.17.24",
     "equicharts": "workspaces/equicharts",
-    "less": "^4.2.0",
-    "less-loader": "^12.2.0",
-    "prettier": "^3.3.3",
-    "typescript": "^5.5.3",
-    "vite": "^5.4.0",
+    "less": "^4.8.0",
+    "less-loader": "^12.3.3",
+    "prettier": "^3.9.6",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.21",
     "vite-plugin-solid": "^2.10.2"
   },
   "workspaces": [

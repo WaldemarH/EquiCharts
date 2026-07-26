@@ -31,7 +31,6 @@ import {
   TooltipShowType,
   TooltipIconPosition,
   CandleType,
-  YAxisPosition,
   YAxisType,
   CandleTooltipRectPosition,
 } from './common/Styles';
@@ -59,9 +58,7 @@ import {
   formatFoldDecimal,
 } from './common/utils/format';
 import { calcTextWidth } from './common/utils/canvas';
-import { ActionType } from './common/Action';
 import { IndicatorSeries } from './component/Indicator';
-import { OverlayMode } from './component/Overlay';
 
 import { type Options, FormatDateType } from './Options';
 import ChartImp, { type Chart, DomPosition } from './Chart';
@@ -131,7 +128,7 @@ function init(ds: HTMLElement | string, options?: Options): Nullable<Chart> {
     logError(
       '',
       '',
-      'The chart cannot be initialized correctly. Please check the parameters. The chart container cannot be null and child elements need to be added!!!',
+      'The chart cannot be initialized correctly. Please check the parameters. The chart container cannot be null and child elements need to be added!!!'
     );
     return null;
   }
@@ -206,6 +203,7 @@ const utils = {
   drawRectText,
 };
 
+//Export types.
 export {
   version,
   init,
@@ -231,11 +229,39 @@ export {
   TooltipIconPosition,
   CandleTooltipRectPosition,
   CandleType,
-  YAxisPosition,
   YAxisType,
   FormatDateType,
   DomPosition,
-  ActionType,
   IndicatorSeries,
-  OverlayMode,
 };
+
+export * from './component/Overlay';
+export * from './extension/figure/arc';
+export * from './extension/figure/circle';
+export * from './extension/figure/line';
+export * from './extension/figure/polygon';
+export * from './extension/figure/rect';
+export * from './extension/figure/rectText';
+export * from './extension/figure/text';
+
+export { ActionType, type ActionCallback } from './common/Action';
+export { default as Animation } from './common/Animation';
+export { type default as Axis } from './component/Axis';
+export { type default as Bounding } from './common/Bounding';
+export { type default as Crosshair } from './common/Crosshair';
+export { type default as Coordinate } from './common/Coordinate';
+export { type default as DeepPartial } from './common/DeepPartial';
+export { type default as LoadDataCallback } from './common/LoadDataCallback';
+export { type default as LoadMoreCallback } from './common/LoadMoreCallback';
+export { type default as Nullable } from './common/Nullable';
+export { type default as Point } from './common/Point';
+export { type default as Precision } from './common/Precision';
+export { type default as TViewData } from './common/TViewData';
+export { type default as VisibleRange } from './common/VisibleRange';
+
+export { type Chart } from './Chart';
+export { type CustomApi, LayoutChildType, type Options } from './Options';
+export { type Indicator, type IndicatorCreate } from './component/Indicator';
+export { type PaneOptions, PanePosition, PaneIdConstants } from './pane/types';
+export { type Styles, type YAxisStyle, YAxisPosition } from './common/Styles';
+export { UpdateLevel } from './common/Updater';

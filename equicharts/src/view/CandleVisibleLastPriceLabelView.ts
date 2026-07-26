@@ -63,7 +63,7 @@ export default class CandleVisibleLastPriceLabelView extends View {
         }
         text = formatFoldDecimal(
           formatThousands(text, chartStore.getThousandsSeparator()),
-          chartStore.getDecimalFoldThreshold(),
+          chartStore.getDecimalFoldThreshold()
         );
         let x: number;
         let textAlgin: CanvasTextAlign;

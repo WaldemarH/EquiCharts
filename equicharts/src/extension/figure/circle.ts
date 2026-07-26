@@ -21,7 +21,7 @@ import { type FigureTemplate } from '../../component/Figure';
 
 export function checkCoordinateOnCircle(
   coordinate: Coordinate,
-  attrs: CircleAttrs | CircleAttrs[],
+  attrs: CircleAttrs | CircleAttrs[]
 ): boolean {
   let circles: CircleAttrs[] = [];
   circles = circles.concat(attrs);
@@ -40,7 +40,7 @@ export function checkCoordinateOnCircle(
 export function drawCircle(
   ctx: CanvasRenderingContext2D,
   attrs: CircleAttrs | CircleAttrs[],
-  styles: Partial<PolygonStyle>,
+  styles: Partial<PolygonStyle>
 ): void {
   let circles: CircleAttrs[] = [];
   circles = circles.concat(attrs);
@@ -104,7 +104,7 @@ const circle: FigureTemplate<
   draw: (
     ctx: CanvasRenderingContext2D,
     attrs: CircleAttrs | CircleAttrs[],
-    styles: Partial<PolygonStyle>,
+    styles: Partial<PolygonStyle>
   ) => {
     drawCircle(ctx, attrs, styles);
   },

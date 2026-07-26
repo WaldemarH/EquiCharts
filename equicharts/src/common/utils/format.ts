@@ -25,13 +25,13 @@ const rePropName = RegExp(
     ')\\]' +
     '|' +
     '(?=(?:\\.|\\[\\])(?:\\.|\\[\\]|$))',
-  'g',
+  'g'
 );
 
 export function formatValue(
   data: unknown,
   key: string,
-  defaultValue?: unknown,
+  defaultValue?: unknown
 ): unknown {
   if (isValid(data)) {
     const path: string[] = [];
@@ -59,7 +59,7 @@ export function formatValue(
 export function formatDate(
   dateTimeFormat: Intl.DateTimeFormat,
   timestamp: number,
-  format: string,
+  format: string
 ): string {
   const date: Record<string, string> = {};
   const dateObj = new Date(timestamp);
@@ -189,7 +189,7 @@ function getDayOfYear(date: Date): number {
 
 export function formatPrecision(
   value: string | number,
-  precision?: number,
+  precision?: number
 ): string {
   const v = +value;
   if (isNumber(v)) {
@@ -228,7 +228,7 @@ export function formatThousands(value: string | number, sign: string): string {
 
 export function formatFoldDecimal(
   value: string | number,
-  threshold: number,
+  threshold: number
 ): string {
   const vl = `${value}`;
   const reg = new RegExp('\\.0{' + threshold + ',}[1-9][0-9]*$');

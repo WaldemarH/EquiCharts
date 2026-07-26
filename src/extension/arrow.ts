@@ -25,12 +25,12 @@ const arrow: OverlayTemplate = {
       const rotateCoordinate1 = getRotateCoordinate(
         { x: coordinates[1].x - 8, y: coordinates[1].y + 4 },
         coordinates[1],
-        offsetAngle,
+        offsetAngle
       );
       const rotateCoordinate2 = getRotateCoordinate(
         { x: coordinates[1].x - 8, y: coordinates[1].y - 4 },
         coordinates[1],
-        offsetAngle,
+        offsetAngle
       );
       return [
         {

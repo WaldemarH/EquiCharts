@@ -21,7 +21,7 @@ import type YAxis from '../component/YAxis';
 
 export default class CandlePane extends IndicatorPane {
   override createMainWidget(
-    container: HTMLElement,
+    container: HTMLElement
   ): DrawWidget<DrawPane<YAxis>> {
     return new CandleWidget(container, this);
   }

@@ -65,7 +65,7 @@ export default abstract class XAxisImp extends AxisImp {
         '00-00 00:00',
         tickTextStyles.size,
         tickTextStyles.weight,
-        tickTextStyles.family,
+        tickTextStyles.family
       );
       const pos = parseInt(ticks[0].value as string, 10);
       const x = this.convertToPixel(pos);
@@ -86,7 +86,7 @@ export default abstract class XAxisImp extends AxisImp {
           dateTimeFormat,
           timestamp,
           'HH:mm',
-          FormatDateType.XAxis,
+          FormatDateType.XAxis
         );
         if (i !== 0) {
           const prevPos = parseInt(ticks[i - tickCountDif].value as string, 10);
@@ -97,7 +97,7 @@ export default abstract class XAxisImp extends AxisImp {
               formatDate,
               dateTimeFormat,
               timestamp,
-              prevTimestamp,
+              prevTimestamp
             ) ?? text;
         }
         const x = this.convertToPixel(pos);
@@ -116,7 +116,7 @@ export default abstract class XAxisImp extends AxisImp {
                   formatDate,
                   dateTimeFormat,
                   Number(lastItem.value) + Number(j * timestampStep),
-                  Number(lastItem.value),
+                  Number(lastItem.value)
                 ) ?? text,
               coord: lastItem.coord + j * coordStep,
               value: Number(lastItem.value) + Number(j * timestampStep),
@@ -130,7 +130,7 @@ export default abstract class XAxisImp extends AxisImp {
           dateTimeFormat,
           optimalTicks[0].value as number,
           'YYYY-MM-DD HH:mm',
-          FormatDateType.XAxis,
+          FormatDateType.XAxis
         );
       } else {
         const firstTimestamp = optimalTicks[0].value as number;
@@ -142,21 +142,21 @@ export default abstract class XAxisImp extends AxisImp {
               dateTimeFormat,
               firstTimestamp,
               'MM-DD',
-              FormatDateType.XAxis,
+              FormatDateType.XAxis
             );
           } else if (/^[0-9]{4}-[0-9]{2}$/.test(thirdText)) {
             optimalTicks[0].text = formatDate(
               dateTimeFormat,
               firstTimestamp,
               'YYYY-MM',
-              FormatDateType.XAxis,
+              FormatDateType.XAxis
             );
           } else if (/^[0-9]{4}$/.test(thirdText)) {
             optimalTicks[0].text = formatDate(
               dateTimeFormat,
               firstTimestamp,
               'YYYY',
-              FormatDateType.XAxis,
+              FormatDateType.XAxis
             );
           }
         } else {
@@ -165,7 +165,7 @@ export default abstract class XAxisImp extends AxisImp {
               formatDate,
               dateTimeFormat,
               firstTimestamp,
-              secondTimestamp,
+              secondTimestamp
             ) ?? optimalTicks[0].text;
         }
       }
@@ -177,25 +177,25 @@ export default abstract class XAxisImp extends AxisImp {
     formatDate: FormatDate,
     dateTimeFormat: Intl.DateTimeFormat,
     timestamp: number,
-    comparedTimestamp: number,
+    comparedTimestamp: number
   ): Nullable<string> {
     const year = formatDate(
       dateTimeFormat,
       timestamp,
       'YYYY',
-      FormatDateType.XAxis,
+      FormatDateType.XAxis
     );
     const month = formatDate(
       dateTimeFormat,
       timestamp,
       'YYYY-MM',
-      FormatDateType.XAxis,
+      FormatDateType.XAxis
     );
     const day = formatDate(
       dateTimeFormat,
       timestamp,
       'MM-DD',
-      FormatDateType.XAxis,
+      FormatDateType.XAxis
     );
     if (
       year !==
@@ -203,7 +203,7 @@ export default abstract class XAxisImp extends AxisImp {
         dateTimeFormat,
         comparedTimestamp,
         'YYYY',
-        FormatDateType.XAxis,
+        FormatDateType.XAxis
       )
     ) {
       return year;
@@ -213,7 +213,7 @@ export default abstract class XAxisImp extends AxisImp {
         dateTimeFormat,
         comparedTimestamp,
         'YYYY-MM',
-        FormatDateType.XAxis,
+        FormatDateType.XAxis
       )
     ) {
       return month;
@@ -223,7 +223,7 @@ export default abstract class XAxisImp extends AxisImp {
         dateTimeFormat,
         comparedTimestamp,
         'MM-DD',
-        FormatDateType.XAxis,
+        FormatDateType.XAxis
       )
     ) {
       return day;

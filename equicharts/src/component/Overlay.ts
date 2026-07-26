@@ -114,7 +114,7 @@ export interface OverlayEvent extends Partial<MouseTouchEvent> {
 export type OverlayEventCallback = (event: OverlayEvent) => boolean;
 
 export type OverlayCreateFiguresCallback = (
-  params: OverlayCreateFiguresCallbackParams,
+  params: OverlayCreateFiguresCallbackParams
 ) => OverlayFigure | OverlayFigure[];
 
 export interface Overlay {
@@ -508,7 +508,7 @@ export default class OverlayImp {
 
   eventPressedOtherMove(
     point: Partial<Point>,
-    timeScaleStore: TimeScaleStore,
+    timeScaleStore: TimeScaleStore
   ): void {
     if (this._prevPressedPoint !== null) {
       let difDataIndex: number;

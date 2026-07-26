@@ -9,7 +9,7 @@ export function getInitialOptions(period: Period) {
         dateTimeFormat: Intl.DateTimeFormat,
         timestamp: number,
         format: string,
-        type: FormatDateType,
+        type: FormatDateType
       ) => {
         const p = period;
         switch (p.timespan) {
@@ -20,7 +20,7 @@ export function getInitialOptions(period: Period) {
             return utils.formatDate(
               dateTimeFormat,
               timestamp,
-              'DD LL YYYY HH:mm',
+              'DD LL YYYY HH:mm'
             );
           }
           case 'hour': {
@@ -30,7 +30,7 @@ export function getInitialOptions(period: Period) {
             return utils.formatDate(
               dateTimeFormat,
               timestamp,
-              'DD LL YYYY HH:mm',
+              'DD LL YYYY HH:mm'
             );
           }
           case 'day': {

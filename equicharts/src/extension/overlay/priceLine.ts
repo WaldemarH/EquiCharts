@@ -55,9 +55,9 @@ const priceLine: OverlayTemplate = {
           text: formatFoldDecimal(
             formatThousands(
               value.toFixed(currentPrecision),
-              thousandsSeparator,
+              thousandsSeparator
             ),
-            decimalFoldThreshold,
+            decimalFoldThreshold
           ),
           baseline: 'bottom',
         },

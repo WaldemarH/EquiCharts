@@ -58,11 +58,11 @@ const fibonacciLine: OverlayTemplate = {
           const value = formatFoldDecimal(
             formatThousands(
               ((points[1].value ?? 0) + valueDif * percent).toFixed(
-                currentPrecision,
+                currentPrecision
               ),
-              thousandsSeparator,
+              thousandsSeparator
             ),
-            decimalFoldThreshold,
+            decimalFoldThreshold
           );
           lines.push({
             coordinates: [

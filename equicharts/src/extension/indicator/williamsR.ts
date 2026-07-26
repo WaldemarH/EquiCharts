@@ -55,7 +55,7 @@ const williamsR: IndicatorTemplate<Wr> = {
           const hln = getMaxMin<TViewData>(
             dataList.slice(i - p, i + 1),
             'high',
-            'low',
+            'low'
           );
           const hn = hln[0];
           const ln = hln[1];

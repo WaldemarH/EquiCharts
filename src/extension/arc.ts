@@ -18,7 +18,7 @@ const arc: OverlayTemplate = {
       const radius =
         Math.sqrt(
           Math.pow(coordinates[1].x - coordinates[0].x, 2) +
-            Math.pow(coordinates[1].y - coordinates[0].y, 2),
+            Math.pow(coordinates[1].y - coordinates[0].y, 2)
         ) / 2;
       const startAngle = 0;
       const endAngle = Math.PI;

@@ -20,7 +20,7 @@ import type YAxis from '../component/YAxis';
 export type EachChildCallback = (
   data: VisibleData,
   barSpace: BarSpace,
-  index: number,
+  index: number
 ) => void;
 
 export default abstract class ChildrenView extends View<YAxis> {

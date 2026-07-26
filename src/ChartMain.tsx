@@ -61,7 +61,7 @@ export default class ChartMain implements ChartPro {
           datafeed={options.datafeed}
         />
       ),
-      this._container,
+      this._container
     );
   }
 

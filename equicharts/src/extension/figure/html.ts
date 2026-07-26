@@ -11,7 +11,7 @@ export interface HtmlAttrs {
 
 function createHtmlElement(
   attrs: HtmlAttrs,
-  styles: Partial<HtmlStyle>,
+  styles: Partial<HtmlStyle>
 ): HTMLElement {
   const container = document.createElement('div');
   container.style.position = 'absolute';
@@ -45,7 +45,7 @@ function createHtmlElement(
 
 export function checkCoordinateOnHtml(
   coordinate: Coordinate,
-  attrs: HtmlAttrs,
+  attrs: HtmlAttrs
 ): boolean {
   const element = document.elementFromPoint(coordinate.x, coordinate.y);
   return element?.closest(`#${attrs.id}`) !== null;
@@ -54,7 +54,7 @@ export function checkCoordinateOnHtml(
 export function drawHtml(
   ctx: CanvasRenderingContext2D,
   attrs: HtmlAttrs,
-  styles: Partial<HtmlStyle>,
+  styles: Partial<HtmlStyle>
 ): void {
   const canvas = ctx.canvas;
   const wrapper = document.createElement('div');

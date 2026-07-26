@@ -99,12 +99,12 @@ export type IndicatorFigureStylesCallbackData<D> =
   IndicatorFigureCallbackBrother<IndicatorFigureStylesCallbackDataChild<D>>;
 
 export type IndicatorFigureAttrsCallback<D> = (
-  params: IndicatorFigureAttrsCallbackParams<D>,
+  params: IndicatorFigureAttrsCallbackParams<D>
 ) => IndicatorFigureAttrs;
 export type IndicatorFigureStylesCallback<D> = (
   data: IndicatorFigureStylesCallbackData<D>,
   indicator: Indicator<D>,
-  defaultStyles: IndicatorStyle,
+  defaultStyles: IndicatorStyle
 ) => IndicatorFigureStyle;
 
 export interface IndicatorFigure<D = any> {
@@ -117,11 +117,10 @@ export interface IndicatorFigure<D = any> {
 }
 
 export type IndicatorShouldUpdateReturn =
-  | boolean
-  | { calc: boolean; draw: boolean };
+  boolean | { calc: boolean; draw: boolean };
 
 export type IndicatorRegenerateFiguresCallback<D = any> = (
-  calcParams: any[],
+  calcParams: any[]
 ) => Array<IndicatorFigure<D>>;
 
 export interface IndicatorTooltipData {
@@ -143,7 +142,7 @@ export interface IndicatorCreateTooltipDataSourceParams<D = any> {
 }
 
 export type IndicatorCreateTooltipDataSourceCallback<D = any> = (
-  params: IndicatorCreateTooltipDataSourceParams<D>,
+  params: IndicatorCreateTooltipDataSourceParams<D>
 ) => IndicatorTooltipData;
 
 export interface IndicatorDrawParams<D = any> {
@@ -159,11 +158,11 @@ export interface IndicatorDrawParams<D = any> {
 }
 
 export type IndicatorDrawCallback<D = any> = (
-  params: IndicatorDrawParams<D>,
+  params: IndicatorDrawParams<D>
 ) => boolean;
 export type IndicatorCalcCallback<D> = (
   dataList: TViewData[],
-  indicator: Indicator<D>,
+  indicator: Indicator<D>
 ) => Promise<D[]> | D[];
 
 export interface Indicator<D = any> {
@@ -242,7 +241,7 @@ export interface Indicator<D = any> {
    */
   shouldUpdate: (
     prev: Indicator<D>,
-    current: Indicator<D>,
+    current: Indicator<D>
   ) => IndicatorShouldUpdateReturn;
 
   /**
@@ -286,7 +285,7 @@ export type IndicatorConstructor<D = any> = new () => IndicatorImp<D>;
 export type EachFigureCallback = (
   figure: IndicatorFigure,
   figureStyles: IndicatorFigureStyle,
-  index: number,
+  index: number
 ) => void;
 
 export function eachFigures<D>(
@@ -294,7 +293,7 @@ export function eachFigures<D>(
   indicator: Indicator<D>,
   dataIndex: number,
   defaultStyles: IndicatorStyle,
-  eachFigureCallback: EachFigureCallback,
+  eachFigureCallback: EachFigureCallback
 ): void {
   const result = indicator.result;
   const figures = indicator.figures;
@@ -303,21 +302,21 @@ export function eachFigures<D>(
   const circleStyles = formatValue(
     styles,
     'circles',
-    defaultStyles.circles,
+    defaultStyles.circles
   ) as IndicatorPolygonStyle[];
   const circleStyleCount = circleStyles.length;
 
   const barStyles = formatValue(
     styles,
     'bars',
-    defaultStyles.bars,
+    defaultStyles.bars
   ) as IndicatorPolygonStyle[];
   const barStyleCount = barStyles.length;
 
   const lineStyles = formatValue(
     styles,
     'lines',
-    defaultStyles.lines,
+    defaultStyles.lines
   ) as SmoothLineStyle[];
   const lineStyleCount = lineStyles.length;
 
@@ -373,7 +372,7 @@ export function eachFigures<D>(
       eachFigureCallback(
         figure,
         { ...defaultFigureStyles, ...ss },
-        figureIndex,
+        figureIndex
       );
     }
   });
@@ -459,7 +458,7 @@ export default class IndicatorImp<D = any> {
     const sort = this._prevIndicator.zLevel !== this._indicator.zLevel;
     const result = this._indicator.shouldUpdate(
       this._prevIndicator,
-      this._indicator,
+      this._indicator
     );
     if (isBoolean(result)) {
       return { calc: result, draw: result, sort };

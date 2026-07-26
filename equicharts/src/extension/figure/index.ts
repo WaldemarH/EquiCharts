@@ -45,13 +45,13 @@ function registerFigure<A = any, S = any>(figure: FigureTemplate<A, S>): void {
 }
 
 function getInnerFigureClass<A = any, S = any>(
-  name: string,
+  name: string
 ): Nullable<FigureInnerConstructor<A, S>> {
   return figures[name] ?? null;
 }
 
 function getFigureClass<A = any, S = any>(
-  name: string,
+  name: string
 ): Nullable<FigureConstructor<A, S>> {
   return figures[name] ?? null;
 }

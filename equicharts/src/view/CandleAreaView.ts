@@ -156,7 +156,7 @@ export default class CandleAreaView extends ChildrenView {
         }
         ctx.lineTo(
           stepCoordinates[stepCoordinates.length - 1].x,
-          bounding.height,
+          bounding.height
         );
         ctx.closePath();
       }
@@ -179,7 +179,7 @@ export default class CandleAreaView extends ChildrenView {
             0,
             bounding.height,
             0,
-            minY,
+            minY
           );
           /* eslint-disable @typescript-eslint/no-unused-vars */
           /* eslint-disable no-empty */

@@ -132,7 +132,7 @@ export default class OverlayStore {
     } else {
       this._instances.forEach((paneInstances) => {
         paneInstances.sort(
-          (o1, o2) => o1.getOverlay().zLevel - o2.getOverlay().zLevel,
+          (o1, o2) => o1.getOverlay().zLevel - o2.getOverlay().zLevel
         );
       });
     }
@@ -141,7 +141,7 @@ export default class OverlayStore {
   addInstances(
     overlays: OverlayCreate[],
     paneId: string,
-    appointPaneFlag: boolean,
+    appointPaneFlag: boolean
   ): Array<Nullable<string>> {
     const ids = overlays.map((overlay) => {
       const id = overlay.id ?? createId(OVERLAY_ID_PREFIX);
@@ -280,7 +280,7 @@ export default class OverlayStore {
   removeInstance(overlayRemove?: OverlayRemove): void {
     const match: (remove: OverlayRemove, overlay: OverlayImp) => boolean = (
       remove: OverlayRemove,
-      overlay: OverlayImp,
+      overlay: OverlayImp
     ) => {
       const o = overlay.getOverlay();
       if (isString(remove.id)) {

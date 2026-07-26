@@ -81,11 +81,11 @@ export default class CandleTooltipView extends IndicatorTooltipView {
       ) {
         const isDrawCandleTooltip = this.isDrawTooltip(
           crosshair,
-          candleStyles.tooltip,
+          candleStyles.tooltip
         );
         const isDrawIndicatorTooltip = this.isDrawTooltip(
           crosshair,
-          indicatorStyles.tooltip,
+          indicatorStyles.tooltip
         );
         this._drawRectTooltip(
           ctx,
@@ -103,7 +103,7 @@ export default class CandleTooltipView extends IndicatorTooltipView {
           isDrawCandleTooltip,
           isDrawIndicatorTooltip,
           adjustedTop,
-          styles,
+          styles
         );
       } else if (
         candleStyles.tooltip.showType === TooltipShowType.Standard &&
@@ -126,7 +126,7 @@ export default class CandleTooltipView extends IndicatorTooltipView {
           offsetLeft + 6,
           adjustedTop,
           maxWidth,
-          candleStyles,
+          candleStyles
         );
         this.drawIndicatorTooltip(
           ctx,
@@ -141,7 +141,7 @@ export default class CandleTooltipView extends IndicatorTooltipView {
           offsetLeft + 1,
           top,
           maxWidth,
-          indicatorStyles,
+          indicatorStyles
         );
       } else if (
         candleStyles.tooltip.showType === TooltipShowType.Rect &&
@@ -162,11 +162,11 @@ export default class CandleTooltipView extends IndicatorTooltipView {
           offsetLeft,
           offsetTop,
           maxWidth,
-          indicatorStyles,
+          indicatorStyles
         );
         const isDrawCandleTooltip = this.isDrawTooltip(
           crosshair,
-          candleStyles.tooltip,
+          candleStyles.tooltip
         );
         this._drawRectTooltip(
           ctx,
@@ -184,7 +184,7 @@ export default class CandleTooltipView extends IndicatorTooltipView {
           isDrawCandleTooltip,
           false,
           top,
-          styles,
+          styles
         );
       } else {
         const { offsetLeft, offsetTop, offsetRight } = candleStyles.tooltip;
@@ -204,11 +204,11 @@ export default class CandleTooltipView extends IndicatorTooltipView {
           offsetLeft,
           offsetTop,
           maxWidth,
-          candleStyles,
+          candleStyles
         );
         const isDrawIndicatorTooltip = this.isDrawTooltip(
           crosshair,
-          indicatorStyles.tooltip,
+          indicatorStyles.tooltip
         );
         this._drawRectTooltip(
           ctx,
@@ -226,7 +226,7 @@ export default class CandleTooltipView extends IndicatorTooltipView {
           false,
           isDrawIndicatorTooltip,
           top,
-          styles,
+          styles
         );
       }
     }
@@ -263,7 +263,7 @@ export default class CandleTooltipView extends IndicatorTooltipView {
     left: number,
     top: number,
     maxWidth: number,
-    styles: CandleStyle,
+    styles: CandleStyle
   ): number {
     const tooltipStyles = styles.tooltip;
     const tooltipTextStyles = tooltipStyles.text;
@@ -283,11 +283,11 @@ export default class CandleTooltipView extends IndicatorTooltipView {
         customApi,
         thousandsSeparator,
         decimalFoldThreshold,
-        styles,
+        styles
       );
 
       const [leftIcons, middleIcons, rightIcons] = this.classifyTooltipIcons(
-        tooltipStyles.icons,
+        tooltipStyles.icons
       );
 
       prevRowHeight = this.drawStandardTooltipIcons(
@@ -299,7 +299,7 @@ export default class CandleTooltipView extends IndicatorTooltipView {
         '',
         left,
         prevRowHeight,
-        maxWidth,
+        maxWidth
       );
 
       prevRowHeight = this.drawStandardTooltipIcons(
@@ -311,7 +311,7 @@ export default class CandleTooltipView extends IndicatorTooltipView {
         '',
         left,
         prevRowHeight,
-        maxWidth,
+        maxWidth
       );
 
       if (legends.length > 0) {
@@ -322,7 +322,7 @@ export default class CandleTooltipView extends IndicatorTooltipView {
           left,
           prevRowHeight,
           maxWidth,
-          tooltipTextStyles,
+          tooltipTextStyles
         );
       }
 
@@ -335,7 +335,7 @@ export default class CandleTooltipView extends IndicatorTooltipView {
         '',
         left,
         prevRowHeight,
-        maxWidth,
+        maxWidth
       );
     }
     return coordinate.y + prevRowHeight;
@@ -357,7 +357,7 @@ export default class CandleTooltipView extends IndicatorTooltipView {
     isDrawCandleTooltip: boolean,
     isDrawIndicatorTooltip: boolean,
     top: number,
-    styles: Styles,
+    styles: Styles
   ): void {
     const candleStyles = styles.candle;
     const indicatorStyles = styles.indicator;
@@ -377,7 +377,7 @@ export default class CandleTooltipView extends IndicatorTooltipView {
         customApi,
         thousandsSeparator,
         decimalFoldThreshold,
-        candleStyles,
+        candleStyles
       );
 
       const { offsetLeft, offsetTop, offsetRight, offsetBottom } =
@@ -443,7 +443,7 @@ export default class CandleTooltipView extends IndicatorTooltipView {
         ctx.font = createFont(
           indicatorTextSize,
           indicatorTextWeight,
-          indicatorTextFamily,
+          indicatorTextFamily
         );
         indicators.forEach((proxy) => {
           const indicator = proxy.getIndicator();
@@ -455,7 +455,7 @@ export default class CandleTooltipView extends IndicatorTooltipView {
               customApi,
               thousandsSeparator,
               decimalFoldThreshold,
-              indicatorStyles,
+              indicatorStyles
             ).values ?? [];
           indicatorLegendsArray.push(tooltipDataValues);
           tooltipDataValues.forEach((data) => {
@@ -648,7 +648,7 @@ export default class CandleTooltipView extends IndicatorTooltipView {
     customApi: CustomApi,
     thousandsSeparator: string,
     decimalFoldThreshold: number,
-    styles: CandleStyle,
+    styles: CandleStyle
   ): TooltipLegend[] {
     const tooltipStyles = styles.tooltip;
     const textColor = tooltipStyles.text.color;
@@ -661,57 +661,57 @@ export default class CandleTooltipView extends IndicatorTooltipView {
         dateTimeFormat,
         current.timestamp,
         'YYYY-MM-DD HH:mm',
-        FormatDateType.Tooltip,
+        FormatDateType.Tooltip
       ),
       '{open}': formatFoldDecimal(
         formatThousands(
           formatPrecision(current.open, pricePrecision),
-          thousandsSeparator,
+          thousandsSeparator
         ),
-        decimalFoldThreshold,
+        decimalFoldThreshold
       ),
       '{high}': formatFoldDecimal(
         formatThousands(
           formatPrecision(current.high, pricePrecision),
-          thousandsSeparator,
+          thousandsSeparator
         ),
-        decimalFoldThreshold,
+        decimalFoldThreshold
       ),
       '{low}': formatFoldDecimal(
         formatThousands(
           formatPrecision(current.low, pricePrecision),
-          thousandsSeparator,
+          thousandsSeparator
         ),
-        decimalFoldThreshold,
+        decimalFoldThreshold
       ),
       '{close}': formatFoldDecimal(
         formatThousands(
           formatPrecision(current.close, pricePrecision),
-          thousandsSeparator,
+          thousandsSeparator
         ),
-        decimalFoldThreshold,
+        decimalFoldThreshold
       ),
       '{volume}': formatFoldDecimal(
         formatThousands(
           customApi.formatBigNumber(
             formatPrecision(
               current.volume ?? tooltipStyles.defaultValue,
-              volumePrecision,
-            ),
+              volumePrecision
+            )
           ),
-          thousandsSeparator,
+          thousandsSeparator
         ),
-        decimalFoldThreshold,
+        decimalFoldThreshold
       ),
       '{turnover}': formatFoldDecimal(
         formatThousands(
           formatPrecision(
             current.turnover ?? tooltipStyles.defaultValue,
-            pricePrecision,
+            pricePrecision
           ),
-          thousandsSeparator,
+          thousandsSeparator
         ),
-        decimalFoldThreshold,
+        decimalFoldThreshold
       ),
       '{change}':
         prevClose === 0
@@ -746,7 +746,7 @@ export default class CandleTooltipView extends IndicatorTooltipView {
         const key = `{${match[1]}}`;
         v.text = v.text.replace(
           key,
-          (mapping[key] ?? tooltipStyles.defaultValue) as string,
+          (mapping[key] ?? tooltipStyles.defaultValue) as string
         );
         if (key === '{change}') {
           v.color =

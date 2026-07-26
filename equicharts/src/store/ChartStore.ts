@@ -278,7 +278,7 @@ export default class ChartStore {
   async addData(
     data: TViewData | TViewData[],
     type?: LoadDataType,
-    more?: boolean,
+    more?: boolean
   ): Promise<void> {
     let success = false;
     let adjustFlag = false;
@@ -315,7 +315,7 @@ export default class ChartStore {
       const lastDataTimestamp = formatValue(
         this._dataList[dataCount - 1],
         'timestamp',
-        0,
+        0
       ) as number;
       if (timestamp > lastDataTimestamp) {
         this._dataList.push(data);
@@ -323,7 +323,7 @@ export default class ChartStore {
           this._timeScaleStore.getLastBarRightSideDiffBarCount();
         if (lastBarRightSideDiffBarCount < 0) {
           this._timeScaleStore.setLastBarRightSideDiffBarCount(
-            --lastBarRightSideDiffBarCount,
+            --lastBarRightSideDiffBarCount
           );
         }
         dataLengthChange = 1;
@@ -378,7 +378,7 @@ export default class ChartStore {
     ) {
       const cb: (data: TViewData[], more?: boolean) => void = (
         data: TViewData[],
-        more?: boolean,
+        more?: boolean
       ) => {
         this.addData(data, params.type, more)
           .then(() => {})

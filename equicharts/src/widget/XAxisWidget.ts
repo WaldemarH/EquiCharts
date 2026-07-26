@@ -27,7 +27,7 @@ export default class XAxisWidget extends DrawWidget<DrawPane<XAxis>> {
   private readonly _xAxisView = new XAxisView(this);
   private readonly _overlayXAxisView = new OverlayXAxisView(this);
   private readonly _crosshairVerticalLabelView = new CrosshairVerticalLabelView(
-    this,
+    this
   );
 
   constructor(rootContainer: HTMLElement, pane: DrawPane<XAxis>) {

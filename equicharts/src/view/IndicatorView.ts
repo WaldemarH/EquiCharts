@@ -33,7 +33,7 @@ import CandleBarView, { type CandleBarOptions } from './CandleBarView';
 
 export default class IndicatorView extends CandleBarView {
   override getCandleBarOptions(
-    chartStore: ChartStore,
+    chartStore: ChartStore
   ): Nullable<CandleBarOptions> {
     const pane = this.getWidget().getPane();
     const yAxis = pane.getAxisComponent();
@@ -49,17 +49,17 @@ export default class IndicatorView extends CandleBarView {
           const upColor = formatValue(
             indicatorStyles,
             'ohlc.upColor',
-            defaultStyles.ohlc.upColor,
+            defaultStyles.ohlc.upColor
           ) as string;
           const downColor = formatValue(
             indicatorStyles,
             'ohlc.downColor',
-            defaultStyles.ohlc.downColor,
+            defaultStyles.ohlc.downColor
           ) as string;
           const noChangeColor = formatValue(
             indicatorStyles,
             'ohlc.noChangeColor',
-            defaultStyles.ohlc.noChangeColor,
+            defaultStyles.ohlc.noChangeColor
           ) as string;
           return {
             type: CandleType.Ohlc,
@@ -162,7 +162,7 @@ export default class IndicatorView extends CandleBarView {
               (
                 figure: IndicatorFigure,
                 figureStyles: IndicatorFigureStyle,
-                figureIndex: number,
+                figureIndex: number
               ) => {
                 if (isValid(currentData?.[figure.key])) {
                   const valueY = currentCoordinate[figure.key];
@@ -249,7 +249,7 @@ export default class IndicatorView extends CandleBarView {
                     })?.draw(ctx);
                   }
                 }
-              },
+              }
             );
           });
 

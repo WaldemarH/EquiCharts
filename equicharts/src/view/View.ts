@@ -43,7 +43,7 @@ export default abstract class View<C extends Axis = Axis> extends Eventful {
 
   protected createFigure(
     figure: FigureCreate,
-    eventHandler?: EventHandler,
+    eventHandler?: EventHandler
   ): Nullable<Figure> {
     const FigureClazz = getInnerFigureClass(figure.name);
     if (FigureClazz !== null) {

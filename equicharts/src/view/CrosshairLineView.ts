@@ -35,7 +35,7 @@ export default class CrosshairLineView extends View {
             { x: 0, y },
             { x: bounding.width, y },
           ],
-          styles.horizontal,
+          styles.horizontal
         );
       }
       const x = crosshair.realX!;
@@ -45,7 +45,7 @@ export default class CrosshairLineView extends View {
           { x, y: 0 },
           { x, y: bounding.height },
         ],
-        styles.vertical,
+        styles.vertical
       );
     }
   }
@@ -53,7 +53,7 @@ export default class CrosshairLineView extends View {
   private _drawLine(
     ctx: CanvasRenderingContext2D,
     coordinates: Coordinate[],
-    styles: CrosshairDirectionStyle,
+    styles: CrosshairDirectionStyle
   ): void {
     if (styles.show) {
       const lineStyles = styles.line;

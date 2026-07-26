@@ -4,7 +4,7 @@ import { Period } from '../types';
 export function getRotateCoordinate(
   coordinate: Coordinate,
   targetCoordinate: Coordinate,
-  angle: number,
+  angle: number
 ): Coordinate {
   const x =
     (coordinate.x - targetCoordinate.x) * Math.cos(angle) -
@@ -19,7 +19,7 @@ export function getRotateCoordinate(
 
 export function getRayLine(
   coordinates: Coordinate[],
-  bounding: Bounding,
+  bounding: Bounding
 ): LineAttrs | LineAttrs[] {
   if (coordinates.length > 1) {
     let coordinate: Coordinate;
@@ -62,7 +62,7 @@ export function getRayLine(
 
 export function getDistance(
   coordinate1: Coordinate,
-  coordinate2: Coordinate,
+  coordinate2: Coordinate
 ): number {
   const xDis = Math.abs(coordinate1.x - coordinate2.x);
   const yDis = Math.abs(coordinate1.y - coordinate2.y);
@@ -71,7 +71,7 @@ export function getDistance(
 
 export function getAngle(
   coordinate1: Coordinate,
-  coordinate2: Coordinate,
+  coordinate2: Coordinate
 ): number {
   const dx = coordinate2.x - coordinate1.x;
   const dy = coordinate2.y - coordinate1.y;
@@ -82,7 +82,7 @@ export function getAngle(
 
 export function getMidpoint(
   coordinate1: Coordinate,
-  coordinate2: Coordinate,
+  coordinate2: Coordinate
 ): { x: number; y: number } {
   const x = (coordinate1.x + coordinate2.x) / 2;
   const y = (coordinate1.y + coordinate2.y) / 2;
@@ -131,7 +131,7 @@ export function formatDate(timestamp: number): string {
 export function addPeriodsToTimestamp(
   period: Period,
   timestamp: number,
-  multiplier: number,
+  multiplier: number
 ) {
   let newTimestamp = timestamp;
   switch (period.timespan) {

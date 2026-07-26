@@ -38,7 +38,7 @@ export default class SeparatorPane extends Pane {
     chart: Chart,
     id: string,
     topPane: DrawPane,
-    bottomPane: DrawPane,
+    bottomPane: DrawPane
   ) {
     super(rootContainer, afterElement, chart, id);
     this.getContainer().style.overflow = '';
@@ -96,7 +96,7 @@ export default class SeparatorPane extends Pane {
   override updateImp(
     level: UpdateLevel,
     container: HTMLElement,
-    bounding: Bounding,
+    bounding: Bounding
   ): void {
     if (level === UpdateLevel.All || level === UpdateLevel.Separator) {
       const styles = this.getChart().getStyles().separator;

@@ -20,7 +20,7 @@ function log(
   messageStyle: string,
   api: string,
   invalidParam: string,
-  append: string,
+  append: string
 ): void {
   if (DEV) {
     const apiStr =
@@ -38,7 +38,7 @@ function log(
       messageStyle,
       apiStr,
       invalidParamStr,
-      appendStr,
+      appendStr
     );
   }
 }
@@ -46,7 +46,7 @@ function log(
 export function logWarn(
   api: string,
   invalidParam: string,
-  append?: string,
+  append?: string
 ): void {
   log(
     '%c😑 tvlinecharts warning%c %s%s%s',
@@ -54,14 +54,14 @@ export function logWarn(
     'color:#FF9600',
     api,
     invalidParam,
-    append ?? '',
+    append ?? ''
   );
 }
 
 export function logError(
   api: string,
   invalidParam: string,
-  append?: string,
+  append?: string
 ): void {
   log(
     '%c😟 tvlinecharts error%c %s%s%s',
@@ -69,7 +69,7 @@ export function logError(
     'color:#DE4646;',
     api,
     invalidParam,
-    append ?? '',
+    append ?? ''
   );
 }
 
@@ -80,6 +80,6 @@ export function logTag(): void {
     '',
     '',
     '',
-    '',
+    ''
   );
 }

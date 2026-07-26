@@ -78,7 +78,7 @@ export default class Event implements EventHandler {
   };
 
   private readonly _boundKeyBoardDownEvent: (event: KeyboardEvent) => void = (
-    event: KeyboardEvent,
+    event: KeyboardEvent
   ) => {
     if (event.shiftKey) {
       switch (event.code) {
@@ -221,7 +221,7 @@ export default class Event implements EventHandler {
       widget?.dispatchEvent('mouseEnterEvent', event);
       this._mouseMoveTriggerWidgetInfo.widget?.dispatchEvent(
         'mouseLeaveEvent',
-        event,
+        event
       );
       this._mouseMoveTriggerWidgetInfo = { pane, widget };
     }
@@ -331,7 +331,7 @@ export default class Event implements EventHandler {
                   .getTimeScaleStore()
                   .zoom(
                     zoomScale,
-                    this._xAxisStartScaleCoordinate ?? undefined,
+                    this._xAxisStartScaleCoordinate ?? undefined
                   );
               }
             }
@@ -632,7 +632,7 @@ export default class Event implements EventHandler {
             this._touchCoordinate = { x: event.x, y: event.y };
             tooltipStore.setCrosshair(
               { x: event.x, y: event.y, paneId: pane?.getId() },
-              true,
+              true
             );
             consumed = true;
           }
@@ -732,7 +732,7 @@ export default class Event implements EventHandler {
 
   private _makeWidgetEvent(
     event: MouseTouchEvent,
-    widget: Nullable<Widget>,
+    widget: Nullable<Widget>
   ): MouseTouchEvent {
     const bounding = widget?.getBounding() ?? null;
     return {
@@ -745,7 +745,7 @@ export default class Event implements EventHandler {
   destroy(): void {
     this._container.removeEventListener(
       'keydown',
-      this._boundKeyBoardDownEvent,
+      this._boundKeyBoardDownEvent
     );
     this._event.destroy();
   }

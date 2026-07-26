@@ -66,13 +66,13 @@ export default class CandleHighLowPriceView extends ChildrenView {
           formatFoldDecimal(
             formatThousands(
               formatPrecision(high, precision.price),
-              thousandsSeparator,
+              thousandsSeparator
             ),
-            decimalFoldThreshold,
+            decimalFoldThreshold
           ),
           { x: highX, y: highY },
           highY < lowY ? [-2, -5] : [2, 5],
-          highPriceMarkStyles,
+          highPriceMarkStyles
         );
       }
       if (lowPriceMarkStyles.show && low !== Number.MAX_SAFE_INTEGER) {
@@ -81,13 +81,13 @@ export default class CandleHighLowPriceView extends ChildrenView {
           formatFoldDecimal(
             formatThousands(
               formatPrecision(low, precision.price),
-              thousandsSeparator,
+              thousandsSeparator
             ),
-            decimalFoldThreshold,
+            decimalFoldThreshold
           ),
           { x: lowX, y: lowY },
           highY < lowY ? [2, 5] : [-2, -5],
-          lowPriceMarkStyles,
+          lowPriceMarkStyles
         );
       }
     }
@@ -98,7 +98,7 @@ export default class CandleHighLowPriceView extends ChildrenView {
     text: string,
     coordinate: Coordinate,
     offsets: number[],
-    styles: CandleHighLowPriceMarkStyle,
+    styles: CandleHighLowPriceMarkStyle
   ): void {
     const startX = coordinate.x;
     const startY = coordinate.y + offsets[0];

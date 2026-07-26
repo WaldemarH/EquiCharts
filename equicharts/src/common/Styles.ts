@@ -279,7 +279,8 @@ export enum CandleTooltipRectPosition {
 }
 
 export interface CandleTooltipRectStyle
-  extends Omit<RectStyle, 'style' | 'borderDashedValue' | 'borderStyle'>,
+  extends
+    Omit<RectStyle, 'style' | 'borderDashedValue' | 'borderStyle'>,
     Padding,
     Offset {
   position: CandleTooltipRectPosition;
@@ -293,7 +294,7 @@ export interface CandleTooltipCustomCallbackData {
 
 export type CandleTooltipCustomCallback = (
   data: CandleTooltipCustomCallbackData,
-  styles: CandleStyle,
+  styles: CandleStyle
 ) => TooltipLegend[];
 
 export interface CandleTooltipStyle extends TooltipStyle, Offset {
@@ -368,11 +369,10 @@ export interface AxisTictViewStyle extends AxisLineStyle {
   length: number;
 }
 
-export interface AxisTickTextStyle
-  extends Pick<
-    StateTextStyle,
-    'show' | 'color' | 'weight' | 'family' | 'size'
-  > {
+export interface AxisTickTextStyle extends Pick<
+  StateTextStyle,
+  'show' | 'color' | 'weight' | 'family' | 'size'
+> {
   marginStart: number;
   marginEnd: number;
 }
@@ -688,7 +688,7 @@ function getDefaultIndicatorStyle(): IndicatorStyle {
       size: 1,
       dashedValue: [2, 2],
       color,
-    }),
+    })
   );
 
   return {

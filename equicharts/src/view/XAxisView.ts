@@ -40,7 +40,7 @@ export default class XAxisView extends AxisView<XAxis> {
   override createTictViews(
     ticks: AxisTick[],
     _bounding: Bounding,
-    styles: AxisStyle,
+    styles: AxisStyle
   ): LineAttrs[] {
     const tictViewStyles = styles.tictView;
     const axisLineSize = styles.axisLine.size;
@@ -55,7 +55,7 @@ export default class XAxisView extends AxisView<XAxis> {
   override createTickTexts(
     ticks: AxisTick[],
     _bounding: Bounding,
-    styles: AxisStyle,
+    styles: AxisStyle
   ): TextAttrs[] {
     const tickTickStyles = styles.tickText;
     const axisLineSize = styles.axisLine.size;

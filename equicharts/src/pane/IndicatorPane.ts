@@ -30,7 +30,7 @@ export default class IndicatorPane extends DrawPane<YAxis> {
   }
 
   override createMainWidget(
-    container: HTMLElement,
+    container: HTMLElement
   ): DrawWidget<DrawPane<YAxis>> {
     return new IndicatorWidget(container, this);
   }

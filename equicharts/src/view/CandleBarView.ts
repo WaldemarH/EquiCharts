@@ -126,14 +126,14 @@ export default class CandleBarView extends ChildrenView {
                 width = Math.round(
                   -6 +
                     ((volume - maxMin[1]) * (6 - -0.4)) /
-                      (maxMin[0] - maxMin[1]),
+                      (maxMin[0] - maxMin[1])
                 );
               }
               rects = this._createVolumeCandleBar(
                 x + width,
                 priceY,
                 barSpace,
-                colors,
+                colors
               );
               break;
             }
@@ -213,7 +213,7 @@ export default class CandleBarView extends ChildrenView {
   }
 
   protected getCandleBarOptions(
-    chartStore: ChartStore,
+    chartStore: ChartStore
   ): Nullable<CandleBarOptions> {
     const candleStyles = chartStore.getStyles().candle;
     return {
@@ -233,7 +233,7 @@ export default class CandleBarView extends ChildrenView {
     x: number,
     priceY: number[],
     barSpace: BarSpace,
-    colors: string[],
+    colors: string[]
   ): Array<FigureCreate<RectAttrs | RectAttrs[], Partial<RectStyle>>> {
     return [
       {
@@ -275,7 +275,7 @@ export default class CandleBarView extends ChildrenView {
     x: number,
     priceY: number[],
     barSpace: BarSpace,
-    colors: string[],
+    colors: string[]
   ): Array<FigureCreate<RectAttrs | RectAttrs[], Partial<RectStyle>>> {
     return [
       {
@@ -309,7 +309,7 @@ export default class CandleBarView extends ChildrenView {
     x: number,
     priceY: number[],
     barSpace: BarSpace,
-    colors: string,
+    colors: string
   ): Array<FigureCreate<RectAttrs | RectAttrs[], Partial<RectStyle>>> {
     return [
       {
@@ -329,7 +329,7 @@ export default class CandleBarView extends ChildrenView {
     x: number,
     priceY: number[],
     barSpace: BarSpace,
-    colors: string[],
+    colors: string[]
   ): Array<FigureCreate<RectAttrs | RectAttrs[], Partial<RectStyle>>> {
     return [
       {

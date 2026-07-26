@@ -14,7 +14,7 @@ const DatepickerModel: Component<DatepickerModelProps> = (props) => {
   const [currentDate, setCurrentDate] = createSignal(new Date());
   const [selectedDate, setSelectedDate] = createSignal<Date | null>(null);
   const [viewMode, setViewMode] = createSignal<'days' | 'months' | 'years'>(
-    'days',
+    'days'
   );
 
   const daysInMonth = (year: number, month: number) =>
@@ -46,7 +46,7 @@ const DatepickerModel: Component<DatepickerModelProps> = (props) => {
     const newDate = new Date(
       currentDate().getFullYear(),
       currentDate().getMonth(),
-      day,
+      day
     );
     if (newDate <= new Date()) {
       setSelectedDate(newDate);
@@ -131,7 +131,7 @@ const DatepickerModel: Component<DatepickerModelProps> = (props) => {
                 {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(
                   (day) => (
                     <div class="datepicker-weekday">{day}</div>
-                  ),
+                  )
                 )}
               </div>
               <div class="datepicker-days">
@@ -140,10 +140,10 @@ const DatepickerModel: Component<DatepickerModelProps> = (props) => {
                     {
                       length: startOfMonth(
                         currentDate().getFullYear(),
-                        currentDate().getMonth(),
+                        currentDate().getMonth()
                       ),
                     },
-                    (_, i) => i,
+                    (_, i) => i
                   )}
                 >
                   {() => <div class="datepicker-day empty"></div>}
@@ -153,17 +153,17 @@ const DatepickerModel: Component<DatepickerModelProps> = (props) => {
                     {
                       length: daysInMonth(
                         currentDate().getFullYear(),
-                        currentDate().getMonth(),
+                        currentDate().getMonth()
                       ),
                     },
-                    (_, i) => i + 1,
+                    (_, i) => i + 1
                   )}
                 >
                   {(day) => {
                     const date = new Date(
                       currentDate().getFullYear(),
                       currentDate().getMonth(),
-                      day,
+                      day
                     );
                     const isFuture = date > new Date();
                     return (

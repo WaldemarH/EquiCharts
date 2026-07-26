@@ -21,7 +21,7 @@ export function createLogarithmicButton(
   setIsLogarithmic: Setter<boolean>,
   isLogarithmic: () => boolean,
   isPercentage: () => boolean,
-  handleSelectedYAxisDataSource: (style: DeepPartial<Styles>) => void,
+  handleSelectedYAxisDataSource: (style: DeepPartial<Styles>) => void
 ): HTMLDivElement {
   const logarthimic = document.createElement('div');
   logarthimic.className = 'price-type-buttons';
@@ -57,7 +57,7 @@ export function createPercentageButton(
   isPercentage: () => boolean,
   isLogarithmic: () => boolean,
   logarthimic: HTMLElement,
-  handleSelectedYAxisDataSource: (style: DeepPartial<Styles>) => void,
+  handleSelectedYAxisDataSource: (style: DeepPartial<Styles>) => void
 ): HTMLDivElement {
   const percentage = document.createElement('div');
   percentage.className = 'price-type-buttons';

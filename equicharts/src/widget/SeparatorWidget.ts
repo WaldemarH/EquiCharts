@@ -48,7 +48,7 @@ export default class SeparatorWidget extends Widget<SeparatorPane> {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       .registerEvent(
         'pressedMouseMoveEvent',
-        this._pressedMouseMoveEvent.bind(this),
+        this._pressedMouseMoveEvent.bind(this)
       )
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       .registerEvent('mouseEnterEvent', this._mouseEnterEvent.bind(this))
@@ -81,7 +81,7 @@ export default class SeparatorWidget extends Widget<SeparatorPane> {
   // eslint-disable-next-line @typescript-eslint/unbound-method
   private readonly _pressedMouseMoveEvent = throttle(
     this._pressedTouchMouseMoveEvent,
-    20,
+    20
   );
 
   private _pressedTouchMouseMoveEvent(event: MouseTouchEvent): boolean {
@@ -110,7 +110,7 @@ export default class SeparatorWidget extends Widget<SeparatorPane> {
       if (startDragReducedPaneHeight > reducedPaneMinHeight) {
         const reducedPaneHeight = Math.max(
           startDragReducedPaneHeight - Math.abs(dragDistance),
-          reducedPaneMinHeight,
+          reducedPaneMinHeight
         );
         const diffHeight = startDragReducedPaneHeight - reducedPaneHeight;
         reducedPane.setBounding({ height: reducedPaneHeight });
@@ -165,7 +165,7 @@ export default class SeparatorWidget extends Widget<SeparatorPane> {
   override updateImp(
     container: HTMLElement,
     _bounding: Bounding,
-    level: UpdateLevel,
+    level: UpdateLevel
   ): void {
     if (level === UpdateLevel.All || level === UpdateLevel.Separator) {
       const styles = this.getPane().getChart().getStyles().separator;

@@ -41,7 +41,7 @@ export default abstract class DrawWidget<
       },
       () => {
         this.updateMain(this._mainCanvas.getContext());
-      },
+      }
     );
     this._overlayCanvas = new Canvas(
       {
@@ -53,7 +53,7 @@ export default abstract class DrawWidget<
       },
       () => {
         this.updateOverlay(this._overlayCanvas.getContext());
-      },
+      }
     );
     const container = this.getContainer();
     container.appendChild(this._mainCanvas.getElement());
@@ -75,7 +75,7 @@ export default abstract class DrawWidget<
   override updateImp(
     container: HTMLElement,
     bounding: Bounding,
-    level: UpdateLevel,
+    level: UpdateLevel
   ): void {
     const { width, height, left } = bounding;
     container.style.left = `${left}px`;

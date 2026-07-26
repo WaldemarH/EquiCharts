@@ -130,26 +130,26 @@ function getVolumeFigure(): IndicatorFigure<Vol> {
     styles: (
       data: IndicatorFigureStylesCallbackData<Vol>,
       indicator: Indicator,
-      defaultStyles: IndicatorStyle,
+      defaultStyles: IndicatorStyle
     ) => {
       const TViewData = data.current.TViewData;
       let color = formatValue(
         indicator.styles,
         'bars[0].noChangeColor',
-        defaultStyles.bars[0].noChangeColor,
+        defaultStyles.bars[0].noChangeColor
       );
       if (isValid(TViewData)) {
         if (TViewData.close > TViewData.open) {
           color = formatValue(
             indicator.styles,
             'bars[0].upColor',
-            defaultStyles.bars[0].upColor,
+            defaultStyles.bars[0].upColor
           );
         } else if (TViewData.close < TViewData.open) {
           color = formatValue(
             indicator.styles,
             'bars[0].downColor',
-            defaultStyles.bars[0].downColor,
+            defaultStyles.bars[0].downColor
           );
         }
       }
@@ -176,7 +176,7 @@ const volume: IndicatorTemplate<Vol> = {
     const figures: Array<IndicatorFigure<Vol>> = params.map(
       (p: number, i: number) => {
         return { key: `ma${i + 1}`, title: `MA${p}: `, type: 'line' };
-      },
+      }
     );
     figures.push(getVolumeFigure());
     return figures;

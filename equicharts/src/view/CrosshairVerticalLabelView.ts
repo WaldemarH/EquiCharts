@@ -51,7 +51,7 @@ export default class CrosshairVerticalLabelView extends CrosshairHorizontalLabel
         chartStore.getTimeScaleStore().getDateTimeFormat(),
         timestamp!,
         'YYYY-MM-DD HH:mm',
-        FormatDateType.Crosshair,
+        FormatDateType.Crosshair
       );
   }
 
@@ -61,7 +61,7 @@ export default class CrosshairVerticalLabelView extends CrosshairHorizontalLabel
     crosshair: Crosshair,
     bounding: Bounding,
     _axis: Axis,
-    styles: StateTextStyle,
+    styles: StateTextStyle
   ): TextAttrs {
     const x = crosshair.realX!;
     let optimalX: number;

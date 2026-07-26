@@ -57,7 +57,7 @@ export default class CrosshairHorizontalLabelView<
           ctx.font = createFont(
             textStyles.size,
             textStyles.weight,
-            textStyles.family,
+            textStyles.family
           );
           this.createFigure({
             name: 'text',
@@ -67,7 +67,7 @@ export default class CrosshairHorizontalLabelView<
               crosshair,
               bounding,
               axis,
-              textStyles,
+              textStyles
             ),
             styles: textStyles,
           })?.draw(ctx);
@@ -81,7 +81,7 @@ export default class CrosshairHorizontalLabelView<
   }
 
   protected getDirectionStyles(
-    styles: CrosshairStyle,
+    styles: CrosshairStyle
   ): CrosshairDirectionStyle {
     return styles.horizontal;
   }
@@ -89,7 +89,7 @@ export default class CrosshairHorizontalLabelView<
   protected getText(
     crosshair: Crosshair,
     chartStore: ChartStore,
-    axis: Axis,
+    axis: Axis
   ): string {
     const yAxis = axis as unknown as YAxis;
     const value = axis.convertFromPixel(crosshair.y!);
@@ -121,7 +121,7 @@ export default class CrosshairHorizontalLabelView<
     }
     return formatFoldDecimal(
       formatThousands(text, chartStore.getThousandsSeparator()),
-      chartStore.getDecimalFoldThreshold(),
+      chartStore.getDecimalFoldThreshold()
     );
   }
 
@@ -132,7 +132,7 @@ export default class CrosshairHorizontalLabelView<
     bounding: Bounding,
     axis: Axis,
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    _styles: StateTextStyle,
+    _styles: StateTextStyle
   ): TextAttrs {
     const yAxis = axis as unknown as YAxis;
     let x: number;

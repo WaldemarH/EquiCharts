@@ -21,7 +21,7 @@ import { type FigureTemplate, DEVIATION } from '../../component/Figure';
 
 export function checkCoordinateOnRect(
   coordinate: Coordinate,
-  attrs: RectAttrs | RectAttrs[],
+  attrs: RectAttrs | RectAttrs[]
 ): boolean {
   let rects: RectAttrs[] = [];
   rects = rects.concat(attrs);
@@ -54,7 +54,7 @@ export function checkCoordinateOnRect(
 export function drawRect(
   ctx: CanvasRenderingContext2D,
   attrs: RectAttrs | RectAttrs[],
-  styles: Partial<RectStyle>,
+  styles: Partial<RectStyle>
 ): void {
   let rects: RectAttrs[] = [];
   rects = rects.concat(attrs);
@@ -105,7 +105,7 @@ export function drawRect(
           y + correction,
           w - doubleCorrection,
           h - doubleCorrection,
-          r,
+          r
         );
         ctx.closePath();
         ctx.stroke();
@@ -131,7 +131,7 @@ const rect: FigureTemplate<RectAttrs | RectAttrs[], Partial<RectStyle>> = {
   draw: (
     ctx: CanvasRenderingContext2D,
     attrs: RectAttrs | RectAttrs[],
-    styles: Partial<RectStyle>,
+    styles: Partial<RectStyle>
   ) => {
     drawRect(ctx, attrs, styles);
   },

@@ -23,7 +23,7 @@ const fibonacciExtension: OverlayTemplate = {
         const y = coordinates[2].y + yDif * percent;
         // @ts-expect-error
         const price = (points[2].value + valueDif * percent).toFixed(
-          precision.price,
+          precision.price
         );
         fbLines.push({
           coordinates: [

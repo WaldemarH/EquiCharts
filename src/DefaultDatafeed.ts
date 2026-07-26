@@ -21,7 +21,7 @@ export default class DefaultDatafeed implements Datafeed {
 
   async searchSymbols(search?: string): Promise<SymbolInfo[]> {
     const response = await fetch(
-      `https://api.polygon.io/v3/reference/tickers?apiKey=${this._apiKey}&active=true&search=${search ?? ''}`,
+      `https://api.polygon.io/v3/reference/tickers?apiKey=${this._apiKey}&active=true&search=${search ?? ''}`
     );
     const result = await response.json();
     return await (result.results || []).map((data: any) => ({
@@ -40,12 +40,12 @@ export default class DefaultDatafeed implements Datafeed {
     symbol: SymbolInfo,
     period: Period,
     from: number,
-    to: number,
+    to: number
   ): Promise<TViewData[]> {
     // const response = await fetch(`https://api.polygon.io/v2/aggs/ticker/${symbol.ticker}/range/${period.multiplier}/${period.timespan}/${from}/${to}?apiKey=${this._apiKey}`)
     // const result = data;
     const response = await fetch(
-      `https://api.polygon.io/v2/aggs/ticker/${symbol.ticker}/range/${period.multiplier}/${period.timespan}/${from}/${to}?apiKey=${this._apiKey}`,
+      `https://api.polygon.io/v2/aggs/ticker/${symbol.ticker}/range/${period.multiplier}/${period.timespan}/${from}/${to}?apiKey=${this._apiKey}`
     );
     const result = await response.json();
     // console.log(result.results)
@@ -63,14 +63,14 @@ export default class DefaultDatafeed implements Datafeed {
   subscribe(
     symbol: SymbolInfo,
     period: Period,
-    callback: DatafeedSubscribeCallback,
+    callback: DatafeedSubscribeCallback
   ): void {
     if (this._prevSymbolMarket !== symbol.market) {
       this._ws?.close();
       this._ws = new WebSocket(`wss://delayed.polygon.io/${symbol.market}`);
       this._ws.onopen = () => {
         this._ws?.send(
-          JSON.stringify({ action: 'auth', params: this._apiKey }),
+          JSON.stringify({ action: 'auth', params: this._apiKey })
         );
       };
       this._ws.onmessage = (event) => {
@@ -81,7 +81,7 @@ export default class DefaultDatafeed implements Datafeed {
               JSON.stringify({
                 action: 'subscribe',
                 params: `T.${symbol.ticker}`,
-              }),
+              })
             );
           }
         } else {
@@ -100,7 +100,7 @@ export default class DefaultDatafeed implements Datafeed {
       };
     } else {
       this._ws?.send(
-        JSON.stringify({ action: 'subscribe', params: `T.${symbol.ticker}` }),
+        JSON.stringify({ action: 'subscribe', params: `T.${symbol.ticker}` })
       );
     }
     this._prevSymbolMarket = symbol.market;

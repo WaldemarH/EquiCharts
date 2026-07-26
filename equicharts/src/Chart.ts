@@ -95,7 +95,7 @@ export interface Chart {
   setCustomApi: (customApi: Partial<CustomApi>) => void;
   setPriceVolumePrecision: (
     pricePrecision: number,
-    volumePrecision: number,
+    volumePrecision: number
   ) => void;
   getPriceVolumePrecision: () => Precision;
   setTimezone: (timezone: string) => void;
@@ -114,7 +114,7 @@ export interface Chart {
   applyNewData: (
     dataList: TViewData[],
     more?: boolean,
-    callback?: () => void,
+    callback?: () => void
   ) => void;
   /**
    * @deprecated
@@ -123,7 +123,7 @@ export interface Chart {
   applyMoreData: (
     dataList: TViewData[],
     more?: boolean,
-    callback?: () => void,
+    callback?: () => void
   ) => void;
   updateData: (data: TViewData, callback?: () => void) => void;
   /**
@@ -136,16 +136,16 @@ export interface Chart {
     value: string | IndicatorCreate,
     isStack?: boolean,
     paneOptions?: PaneOptions,
-    callback?: () => void,
+    callback?: () => void
   ) => Nullable<string>;
   overrideIndicator: (
     override: IndicatorCreate,
     paneId?: string,
-    callback?: () => void,
+    callback?: () => void
   ) => void;
   getIndicatorByPaneId: (
     paneId?: string,
-    name?: string,
+    name?: string
   ) =>
     | Nullable<Indicator>
     | Nullable<Map<string, Indicator>>
@@ -153,7 +153,7 @@ export interface Chart {
   removeIndicator: (paneId: string, name?: string) => void;
   createOverlay: (
     value: string | OverlayCreate | Array<string | OverlayCreate>,
-    paneId?: string,
+    paneId?: string
   ) => Nullable<string> | Array<Nullable<string>>;
   getOverlayById: (id: string) => Nullable<Overlay>;
   overrideOverlay: (override: Partial<OverlayCreate>) => void;
@@ -172,25 +172,25 @@ export interface Chart {
   zoomAtCoordinate: (
     scale: number,
     coordinate?: Coordinate,
-    animationDuration?: number,
+    animationDuration?: number
   ) => void;
   zoomAtDataIndex: (
     scale: number,
     dataIndex: number,
-    animationDuration?: number,
+    animationDuration?: number
   ) => void;
   zoomAtTimestamp: (
     scale: number,
     timestamp: number,
-    animationDuration?: number,
+    animationDuration?: number
   ) => void;
   convertToPixel: (
     points: Partial<Point> | Array<Partial<Point>>,
-    finder: ConvertFinder,
+    finder: ConvertFinder
   ) => Partial<Coordinate> | Array<Partial<Coordinate>>;
   convertFromPixel: (
     coordinates: Array<Partial<Coordinate>>,
-    finder: ConvertFinder,
+    finder: ConvertFinder
   ) => Partial<Point> | Array<Partial<Point>>;
   executeAction: (type: ActionType, data: any) => void;
   subscribeAction: (type: ActionType, callback: ActionCallback) => void;
@@ -198,7 +198,7 @@ export interface Chart {
   getConvertPictureUrl: (
     includeOverlay?: boolean,
     type?: string,
-    backgroundColor?: string,
+    backgroundColor?: string
   ) => string;
   resize: () => void;
 }
@@ -250,13 +250,13 @@ export default class ChartImp implements Chart {
     let xAxisPaneInitialized = false;
 
     const createXAxisPane: (ops?: PaneOptions) => void = (
-      ops?: PaneOptions,
+      ops?: PaneOptions
     ) => {
       if (!xAxisPaneInitialized) {
         const pane = this._createPane<XAxisPane>(
           XAxisPane,
           PaneIdConstants.X_AXIS,
-          ops ?? {},
+          ops ?? {}
         );
         this._xAxisPane = pane;
         xAxisPaneInitialized = true;
@@ -272,7 +272,7 @@ export default class ChartImp implements Chart {
             this._candlePane = this._createPane<CandlePane>(
               CandlePane,
               PaneIdConstants.CANDLE,
-              paneOptions,
+              paneOptions
             );
             const content = child.content ?? [];
             content.forEach((v) => {
@@ -311,10 +311,10 @@ export default class ChartImp implements Chart {
       afterElement: Nullable<HTMLElement>,
       chart: Chart,
       id: string,
-      options: Omit<PaneOptions, 'id' | 'height'>,
+      options: Omit<PaneOptions, 'id' | 'height'>
     ) => P,
     id: string,
-    options?: PaneOptions,
+    options?: PaneOptions
   ): P {
     let index: Nullable<number> = null;
     let pane: Nullable<P> = null;
@@ -328,7 +328,7 @@ export default class ChartImp implements Chart {
             firstPane.getContainer(),
             this,
             id,
-            options ?? {},
+            options ?? {}
           );
           index = 0;
         }
@@ -350,7 +350,7 @@ export default class ChartImp implements Chart {
               p.getContainer(),
               this,
               id,
-              options ?? {},
+              options ?? {}
             );
             index = i;
             break;
@@ -364,7 +364,7 @@ export default class ChartImp implements Chart {
         null,
         this,
         id,
-        options ?? {},
+        options ?? {}
       );
     }
     let newIndex: number;
@@ -393,7 +393,7 @@ export default class ChartImp implements Chart {
             this,
             '',
             pane,
-            nextPane,
+            nextPane
           );
           this._separatorPanes.set(nextPane, separatorPane);
         }
@@ -411,7 +411,7 @@ export default class ChartImp implements Chart {
           this,
           '',
           prevPane,
-          pane,
+          pane
         );
         this._separatorPanes.set(pane, separatorPane);
       }
@@ -444,7 +444,7 @@ export default class ChartImp implements Chart {
           indicatorPaneTotalHeight = paneExcludeXAxisHeight;
           paneHeight = Math.max(
             paneExcludeXAxisHeight - indicatorPaneTotalHeight,
-            0,
+            0
           );
         } else {
           indicatorPaneTotalHeight += paneHeight;
@@ -482,7 +482,7 @@ export default class ChartImp implements Chart {
       if (pane.getId() !== PaneIdConstants.X_AXIS) {
         yAxisWidth = Math.max(
           yAxisWidth,
-          pane.getAxisComponent().getAutoSize(),
+          pane.getAxisComponent().getAutoSize()
         );
       }
     });
@@ -528,7 +528,7 @@ export default class ChartImp implements Chart {
 
   private _setPaneOptions(
     options: PaneOptions,
-    forceShouldAdjust: boolean,
+    forceShouldAdjust: boolean
   ): void {
     if (isString(options.id)) {
       const pane = this.getDrawPaneById(options.id);
@@ -542,7 +542,7 @@ export default class ChartImp implements Chart {
         ) {
           const minHeight = Math.max(
             options.minHeight ?? pane.getOptions().minHeight,
-            0,
+            0
           );
           const height = Math.max(minHeight, options.height);
           pane.setBounding({ height });
@@ -596,7 +596,7 @@ export default class ChartImp implements Chart {
     shouldMeasureWidth: boolean,
     shouldUpdate: boolean,
     shouldAdjustYAxis?: boolean,
-    shouldForceAdjustYAxis?: boolean,
+    shouldForceAdjustYAxis?: boolean
   ): void {
     if (shouldMeasureHeight) {
       this._measurePaneHeight();
@@ -749,7 +749,7 @@ export default class ChartImp implements Chart {
 
   setPriceVolumePrecision(
     pricePrecision: number,
-    volumePrecision: number,
+    volumePrecision: number
   ): void {
     this._chartStore.setPrecision({
       price: pricePrecision,
@@ -784,7 +784,7 @@ export default class ChartImp implements Chart {
       logWarn(
         'setMaxOffsetLeftDistance',
         'distance',
-        'distance must greater than zero!!!',
+        'distance must greater than zero!!!'
       );
       return;
     }
@@ -796,7 +796,7 @@ export default class ChartImp implements Chart {
       logWarn(
         'setMaxOffsetRightDistance',
         'distance',
-        'distance must greater than zero!!!',
+        'distance must greater than zero!!!'
       );
       return;
     }
@@ -808,7 +808,7 @@ export default class ChartImp implements Chart {
       logWarn(
         'setLeftMinVisibleBarCount',
         'barCount',
-        'barCount must greater than zero!!!',
+        'barCount must greater than zero!!!'
       );
       return;
     }
@@ -822,7 +822,7 @@ export default class ChartImp implements Chart {
       logWarn(
         'setRightMinVisibleBarCount',
         'barCount',
-        'barCount must greater than zero!!!',
+        'barCount must greater than zero!!!'
       );
       return;
     }
@@ -856,7 +856,7 @@ export default class ChartImp implements Chart {
       logWarn(
         'applyNewData',
         '',
-        "param `callback` has been deprecated since version 9.8.0, use `subscribeAction('onDataReady')` instead.",
+        "param `callback` has been deprecated since version 9.8.0, use `subscribeAction('onDataReady')` instead."
       );
     }
     this._chartStore
@@ -875,12 +875,12 @@ export default class ChartImp implements Chart {
   applyMoreData(
     data: TViewData[],
     more?: boolean,
-    callback?: () => void,
+    callback?: () => void
   ): void {
     logWarn(
       '',
       '',
-      'Api `applyMoreData` has been deprecated since version 9.8.0.',
+      'Api `applyMoreData` has been deprecated since version 9.8.0.'
     );
     this._chartStore
       .addData(data, LoadDataType.Forward, more ?? true)
@@ -896,7 +896,7 @@ export default class ChartImp implements Chart {
       logWarn(
         'updateData',
         '',
-        "param `callback` has been deprecated since version 9.8.0, use `subscribeAction('onDataReady')` instead.",
+        "param `callback` has been deprecated since version 9.8.0, use `subscribeAction('onDataReady')` instead."
       );
     }
     this._chartStore
@@ -916,7 +916,7 @@ export default class ChartImp implements Chart {
     logWarn(
       '',
       '',
-      'Api `loadMore` has been deprecated since version 9.8.0, use `setLoadDataCallback` instead.',
+      'Api `loadMore` has been deprecated since version 9.8.0, use `setLoadDataCallback` instead.'
     );
     this._chartStore.setLoadMoreCallback(cb);
   }
@@ -929,14 +929,14 @@ export default class ChartImp implements Chart {
     value: string | IndicatorCreate,
     isStack?: boolean,
     paneOptions?: Nullable<PaneOptions>,
-    callback?: () => void,
+    callback?: () => void
   ): Nullable<string> {
     const indicator = isString(value) ? { name: value } : value;
     if (getIndicatorClass(indicator.name) === null) {
       logWarn(
         'createIndicator',
         'value',
-        'indicator not supported, you may need to use registerIndicator to add one!!!',
+        'indicator not supported, you may need to use registerIndicator to add one!!!'
       );
       return null;
     }
@@ -951,7 +951,7 @@ export default class ChartImp implements Chart {
         .then((_) => {
           this._setPaneOptions(
             paneOptions ?? {},
-            currentPane.getAxisComponent().buildTicks(true) ?? false,
+            currentPane.getAxisComponent().buildTicks(true) ?? false
           );
         })
         .catch((_) => {});
@@ -974,7 +974,7 @@ export default class ChartImp implements Chart {
   overrideIndicator(
     override: IndicatorCreate,
     paneId?: Nullable<string>,
-    callback?: () => void,
+    callback?: () => void
   ): void {
     this._chartStore
       .getIndicatorStore()
@@ -990,7 +990,7 @@ export default class ChartImp implements Chart {
 
   getIndicatorByPaneId(
     paneId?: string,
-    name?: string,
+    name?: string
   ):
     | Nullable<Indicator>
     | Nullable<Map<string, Indicator>>
@@ -1043,7 +1043,7 @@ export default class ChartImp implements Chart {
 
   createOverlay(
     value: string | OverlayCreate | Array<string | OverlayCreate>,
-    paneId?: string,
+    paneId?: string
   ): Nullable<string> | Array<Nullable<string>> {
     let overlays: OverlayCreate[] = [];
     if (isString(value)) {
@@ -1055,7 +1055,7 @@ export default class ChartImp implements Chart {
             return { name: v };
           }
           return v;
-        },
+        }
       );
     } else {
       const overlay = value as OverlayCreate;
@@ -1160,7 +1160,7 @@ export default class ChartImp implements Chart {
     const dataIndex = binarySearchNearest(
       this.getDataList(),
       'timestamp',
-      timestamp,
+      timestamp
     );
     this.scrollToDataIndex(dataIndex, animationDuration);
   }
@@ -1168,7 +1168,7 @@ export default class ChartImp implements Chart {
   zoomAtCoordinate(
     scale: number,
     coordinate?: Coordinate,
-    animationDuration?: number,
+    animationDuration?: number
   ): void {
     const duration =
       isNumber(animationDuration) && animationDuration > 0
@@ -1199,7 +1199,7 @@ export default class ChartImp implements Chart {
   zoomAtDataIndex(
     scale: number,
     dataIndex: number,
-    animationDuration?: number,
+    animationDuration?: number
   ): void {
     const x = this._chartStore
       .getTimeScaleStore()
@@ -1210,19 +1210,19 @@ export default class ChartImp implements Chart {
   zoomAtTimestamp(
     scale: number,
     timestamp: number,
-    animationDuration?: number,
+    animationDuration?: number
   ): void {
     const dataIndex = binarySearchNearest(
       this.getDataList(),
       'timestamp',
-      timestamp,
+      timestamp
     );
     this.zoomAtDataIndex(scale, dataIndex, animationDuration);
   }
 
   convertToPixel(
     points: Partial<Point> | Array<Partial<Point>>,
-    finder: ConvertFinder,
+    finder: ConvertFinder
   ): Partial<Coordinate> | Array<Partial<Coordinate>> {
     const { paneId = PaneIdConstants.CANDLE, absolute = false } = finder;
     let coordinates: Array<Partial<Coordinate>> = [];
@@ -1256,7 +1256,7 @@ export default class ChartImp implements Chart {
 
   convertFromPixel(
     coordinates: Array<Partial<Coordinate>>,
-    finder: ConvertFinder,
+    finder: ConvertFinder
   ): Partial<Point> | Array<Partial<Point>> {
     const { paneId = PaneIdConstants.CANDLE, absolute = false } = finder;
     let points: Array<Partial<Point>> = [];
@@ -1309,7 +1309,7 @@ export default class ChartImp implements Chart {
   getConvertPictureUrl(
     includeOverlay?: boolean,
     type?: string,
-    backgroundColor?: string,
+    backgroundColor?: string
   ): string {
     const width = this._chartContainer.clientWidth;
     const height = this._chartContainer.clientHeight;
@@ -1336,7 +1336,7 @@ export default class ChartImp implements Chart {
           separatorBounding.left,
           separatorBounding.top,
           separatorBounding.width,
-          separatorBounding.height,
+          separatorBounding.height
         );
       }
 
@@ -1346,7 +1346,7 @@ export default class ChartImp implements Chart {
         0,
         bounding.top,
         width,
-        bounding.height,
+        bounding.height
       );
     });
     return canvas.toDataURL(`image/${type ?? 'jpeg'}`);

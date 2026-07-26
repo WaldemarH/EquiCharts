@@ -324,7 +324,7 @@ export default abstract class YAxisImp extends AxisImp implements YAxis {
       }
       v = formatFoldDecimal(
         formatThousands(v, thousandsSeparator),
-        decimalFoldThreshold,
+        decimalFoldThreshold
       );
       const validYNumber = isNumber(validY);
       if (
@@ -368,8 +368,8 @@ export default abstract class YAxisImp extends AxisImp implements YAxis {
               tick.text,
               yAxisStyles.tickText.size,
               yAxisStyles.tickText.weight,
-              yAxisStyles.tickText.family,
-            ),
+              yAxisStyles.tickText.family
+            )
           );
         });
         yAxisWidth +=
@@ -417,7 +417,7 @@ export default abstract class YAxisImp extends AxisImp implements YAxis {
       }
       valueText = formatFoldDecimal(
         valueText,
-        chartStore.getDecimalFoldThreshold(),
+        chartStore.getDecimalFoldThreshold()
       );
       crosshairVerticalTextWidth +=
         crosshairStyles.horizontal.text.paddingLeft +
@@ -427,7 +427,7 @@ export default abstract class YAxisImp extends AxisImp implements YAxis {
           valueText,
           crosshairStyles.horizontal.text.size,
           crosshairStyles.horizontal.text.weight,
-          crosshairStyles.horizontal.text.family,
+          crosshairStyles.horizontal.text.family
         );
     }
     return Math.max(yAxisWidth, crosshairVerticalTextWidth);

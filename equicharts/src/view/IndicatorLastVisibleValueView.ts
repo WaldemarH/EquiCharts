@@ -62,7 +62,7 @@ export default class IndicatorLastVisibleValueView extends View<YAxis> {
             defaultStyles,
             (
               figure: IndicatorFigure,
-              figureStyles: Required<IndicatorFigureStyle>,
+              figureStyles: Required<IndicatorFigureStyle>
             ) => {
               const value = indicatorData[figure.key];
               if (isNumber(value)) {
@@ -73,7 +73,7 @@ export default class IndicatorLastVisibleValueView extends View<YAxis> {
                 }
                 text = formatFoldDecimal(
                   formatThousands(text, thousandsSeparator),
-                  decimalFoldThreshold,
+                  decimalFoldThreshold
                 );
                 let x: number;
                 let textAlign: CanvasTextAlign;
@@ -100,7 +100,7 @@ export default class IndicatorLastVisibleValueView extends View<YAxis> {
                   },
                 })?.draw(ctx);
               }
-            },
+            }
           );
         }
       });

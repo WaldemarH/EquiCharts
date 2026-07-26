@@ -21,7 +21,7 @@ import { type FigureTemplate } from '../../component/Figure';
 
 export function checkCoordinateOnPolygon(
   coordinate: Coordinate,
-  attrs: PolygonAttrs | PolygonAttrs[],
+  attrs: PolygonAttrs | PolygonAttrs[]
 ): boolean {
   let polygons: PolygonAttrs[] = [];
   polygons = polygons.concat(attrs);
@@ -54,7 +54,7 @@ export function checkCoordinateOnPolygon(
 export function drawPolygon(
   ctx: CanvasRenderingContext2D,
   attrs: PolygonAttrs | PolygonAttrs[],
-  styles: Partial<PolygonStyle>,
+  styles: Partial<PolygonStyle>
 ): void {
   let polygons: PolygonAttrs[] = [];
   polygons = polygons.concat(attrs);
@@ -118,7 +118,7 @@ const polygon: FigureTemplate<
   draw: (
     ctx: CanvasRenderingContext2D,
     attrs: PolygonAttrs | PolygonAttrs[],
-    styles: Partial<PolygonStyle>,
+    styles: Partial<PolygonStyle>
   ) => {
     drawPolygon(ctx, attrs, styles);
   },

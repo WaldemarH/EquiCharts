@@ -34,10 +34,10 @@ const fibonacciSpeedResistanceFan: OverlayTemplate = {
           ],
         });
         lines2 = lines2.concat(
-          getRayLine([coordinates[0], { x, y: coordinates[1].y }], bounding),
+          getRayLine([coordinates[0], { x, y: coordinates[1].y }], bounding)
         );
         lines2 = lines2.concat(
-          getRayLine([coordinates[0], { x: coordinates[1].x, y }], bounding),
+          getRayLine([coordinates[0], { x: coordinates[1].x, y }], bounding)
         );
         texts.unshift({
           x: coordinates[0].x + xOffset,

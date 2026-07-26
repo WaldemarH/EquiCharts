@@ -21,7 +21,7 @@ import { getLinearYFromCoordinates, type LineAttrs } from '../figure/line';
 
 export function getRayLine(
   coordinates: Coordinate[],
-  bounding: Bounding,
+  bounding: Bounding
 ): LineAttrs | LineAttrs[] {
   if (coordinates.length > 1) {
     let coordinate: Coordinate;

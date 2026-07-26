@@ -22,4 +22,5 @@ package-lock.json
 *.njsproj
 *.sln
 *.sw?
+.vs/
 tsconfig.node.tsbuildinfo

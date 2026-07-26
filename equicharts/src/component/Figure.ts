@@ -38,11 +38,11 @@ export type FigureCreate<A = any, S = any> = Pick<
 >;
 
 export type FigureInnerConstructor<A = any, S = any> = new (
-  figure: FigureCreate<A, S>,
+  figure: FigureCreate<A, S>
 ) => FigureImp<A, S>;
 
 export type FigureConstructor<A = any, S = any> = new (
-  figure: FigureCreate<A, S>,
+  figure: FigureCreate<A, S>
 ) => { draw: (ctx: CanvasRenderingContext2D) => void };
 
 export default abstract class FigureImp<A = any, S = any>
@@ -79,13 +79,13 @@ export default abstract class FigureImp<A = any, S = any>
   abstract checkEventOnImp(
     event: MouseTouchEvent,
     attrs: A,
-    styles: S,
+    styles: S
   ): boolean;
 
   abstract drawImp(ctx: CanvasRenderingContext2D, attrs: A, styles: S): void;
 
   static extend<A, S>(
-    figure: FigureTemplate<A, S>,
+    figure: FigureTemplate<A, S>
   ): new (figure: FigureCreate) => FigureImp<A, S> {
     class Custom extends FigureImp<A, S> {
       checkEventOnImp(coordinate: Coordinate, attrs: A, styles: S): boolean {

@@ -76,7 +76,7 @@ export default abstract class Widget<P extends Pane = Pane>
     this.updateImp(
       this._container,
       this._bounding,
-      level ?? UpdateLevel.Drawer,
+      level ?? UpdateLevel.Drawer
     );
   }
 
@@ -91,6 +91,6 @@ export default abstract class Widget<P extends Pane = Pane>
   protected abstract updateImp(
     container: HTMLElement,
     bounding: Bounding,
-    level: UpdateLevel,
+    level: UpdateLevel
   ): void;
 }

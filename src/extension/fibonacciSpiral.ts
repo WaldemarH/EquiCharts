@@ -27,7 +27,7 @@ const fibonacciSpiral: OverlayTemplate = {
       const rotateCoordinate1 = getRotateCoordinate(
         { x: coordinates[0].x - startRadius, y: coordinates[0].y },
         coordinates[0],
-        offsetAngle,
+        offsetAngle
       );
       const rotateCoordinate2 = getRotateCoordinate(
         {
@@ -35,7 +35,7 @@ const fibonacciSpiral: OverlayTemplate = {
           y: coordinates[0].y - startRadius,
         },
         coordinates[0],
-        offsetAngle,
+        offsetAngle
       );
       const arcs = [
         {
@@ -82,7 +82,7 @@ const fibonacciSpiral: OverlayTemplate = {
         const rotateCoordinate = getRotateCoordinate(
           { x, y },
           coordinates[0],
-          offsetAngle,
+          offsetAngle
         );
         arcs.push({
           ...rotateCoordinate,

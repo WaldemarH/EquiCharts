@@ -17,7 +17,7 @@ export interface InputProps {
 const Input: Component<InputProps> = (p) => {
   const props = mergeProps(
     { min: Number.MIN_SAFE_INTEGER, max: Number.MAX_SAFE_INTEGER },
-    p,
+    p
   );
   let input: HTMLInputElement;
 

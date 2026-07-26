@@ -45,7 +45,7 @@ export function translateTimezone(timezone: string, locale: string): string {
 }
 
 export function createTimezoneSelectOptions(
-  locale: string,
+  locale: string
 ): SelectDataSourceItem[] {
   return [
     { key: 'Etc/UTC', text: i18n('utc', locale) },

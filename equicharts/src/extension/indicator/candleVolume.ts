@@ -106,7 +106,7 @@ const candleVolume = {
         x - barSpace.halfGapBar,
         barStartY,
         barSpace.gapBar,
-        height - barStartY,
+        height - barStartY
       );
     }
     return false;

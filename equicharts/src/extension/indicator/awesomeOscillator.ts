@@ -39,7 +39,7 @@ const awesomeOscillator: IndicatorTemplate<Ao> = {
       styles: (
         data: IndicatorFigureStylesCallbackData<Ao>,
         indicator: Indicator<Ao>,
-        defaultStyles: IndicatorStyle,
+        defaultStyles: IndicatorStyle
       ) => {
         const { prev, current } = data;
         const prevAo = prev.indicatorData?.ao ?? Number.MIN_SAFE_INTEGER;
@@ -49,13 +49,13 @@ const awesomeOscillator: IndicatorTemplate<Ao> = {
           color = formatValue(
             indicator.styles,
             'bars[0].upColor',
-            defaultStyles.bars[0].upColor,
+            defaultStyles.bars[0].upColor
           ) as string;
         } else {
           color = formatValue(
             indicator.styles,
             'bars[0].downColor',
-            defaultStyles.bars[0].downColor,
+            defaultStyles.bars[0].downColor
           ) as string;
         }
         const style =

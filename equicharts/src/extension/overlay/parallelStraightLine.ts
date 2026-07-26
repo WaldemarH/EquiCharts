@@ -29,7 +29,7 @@ import { type LineAttrs, getLinearSlopeIntercept } from '../figure/line';
 export function getParallelLines(
   coordinates: Coordinate[],
   bounding: Bounding,
-  extendParallelLineCount?: number,
+  extendParallelLineCount?: number
 ): LineAttrs[] {
   const count = extendParallelLineCount ?? 0;
   const lines: LineAttrs[] = [];
